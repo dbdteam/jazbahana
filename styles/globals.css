@@ -1,26 +1,24 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@import url("https://fonts.googleapis.com/css2?family=Iceberg&family=Montserrat:ital,wght@1,500;1,700&display=swap");
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+@layer base {
+  html,
   body {
-    color: white;
-    background: black;
+    @apply font-sans bg-light dark:bg-dark dark:text-light;
+  }
+  h1 {
+    @apply text-2xl sm:text-5xl;
+  }
+}
+
+@layer components {
+  .feature {
+    @apply font-sans flex justify-evenly flex-col sm:flex-row p-8 rounded-md items-center;
+  }
+  .feature > p{
+    @apply text-2xl;
   }
 }
