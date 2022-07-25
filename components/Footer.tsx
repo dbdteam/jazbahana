@@ -3,16 +3,36 @@ function Footer() {
     <footer className="font-sans text-center bg-gray-100 dark:bg-darker">
       <ul className="flex justify-around py-4 border-b-2">
         <li>
-          <a href="https://github.com/jolshylar">Github</a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://github.com/jolshylar"
+          >
+            Github
+          </a>
         </li>
         <li>
-          <a href="https://discord.com/invite/6dSpCGtJuB">Discord</a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://discord.com/invite/6dSpCGtJuB"
+          >
+            Discord
+          </a>
         </li>
         <li>
-          <a href="https://instagram.com/jolshylar">Instagram</a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://instagram.com/jolshylar"
+          >
+            Instagram
+          </a>
         </li>
         <li>
-          <a href="mailto:jolshylar@gmail.com">E-mail</a>
+          <a target="_blank" rel="noreferrer" href="mailto:jolshylar@gmail.com">
+            E-mail
+          </a>
         </li>
       </ul>
       <div className="py-4">&copy; Jolshylar 2022. All rights reserved.</div>
