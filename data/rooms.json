@@ -1,0 +1,26 @@
+[
+  {
+    "author": "urmom",
+    "title": "Urmom discussion",
+    "description": "ur mom is a joke",
+    "participants": 0,
+    "topics": "Urmom",
+    "date": "1 month, 1 week ago"
+  },
+  {
+    "author": "admin",
+    "title": "Another Post",
+    "description": "Just for the footer to not be that clumsy.",
+    "participants": 0,
+    "topics": "Development",
+    "date": "1 month, 1 week ago"
+  },
+  {
+    "author": "successful",
+    "title": "First Ever Post!",
+    "description": "Successful deployment on Heroku",
+    "participants": 1,
+    "topics": "Development",
+    "date": "1 month, 1 week ago"
+  }
+]
