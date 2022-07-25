@@ -24,8 +24,12 @@ const Navbar = () => {
           />
         </div>
         <div className="flex text-2xl gap-4">
-          <li>sign in</li>
-          <li className="text-primary">log in</li>
+          <li>
+            <Link href="#signin">sign in</Link>
+          </li>
+          <li className="text-primary">
+            <Link href="#login">log in</Link>
+          </li>
         </div>
       </ul>
     </nav>

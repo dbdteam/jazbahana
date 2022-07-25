@@ -18,7 +18,7 @@
   .feature {
     @apply font-sans flex justify-evenly flex-col sm:flex-row p-8 rounded-md items-center;
   }
-  .feature > p{
-    @apply text-2xl;
+  .feature > p {
+    @apply mt-4 mx-4 text-2xl;
   }
 }
