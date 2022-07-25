@@ -15,7 +15,7 @@ function Features() {
           />
           <p>
             It solves the task by opening a chat-like room <br /> with an invite
-            link, that is sent to people you ask notes from
+            link, that is sent to people you ask notes from.
           </p>
         </div>
 
@@ -45,7 +45,10 @@ function Features() {
             height={250}
             alt="Economy Feature"
           />
-          <p>Economy. Jazbahana offers its own currency called `JazbaPoint`</p>
+          <p>
+            Economy. Jazbahana offers its own currency called{" "}
+            <span className="text-secondary">JazbaPoint</span>.
+          </p>
         </div>
       </div>
     </div>

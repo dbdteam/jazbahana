@@ -11,10 +11,11 @@ interface RoomParams {
 }
 
 const RoomBox = ({ room }: { room: RoomParams }) => {
+  const iconStyles = { width: 24, height: 24 };
   return (
     <div className="max-w-[720px] mx-auto my-10 bg-gray-100 rounded-md p-5">
       <div className="flex items-center justify-between">
-        <a href={`#${room.author}`} className="flex items-center gap-4">
+        <a href={`#${room.author}`} className="flex items-center gap-2">
           <div className="border-2 border-primary rounded-full">
             <Image
               src="/images/avatar.svg"
@@ -34,7 +35,8 @@ const RoomBox = ({ room }: { room: RoomParams }) => {
         <p>{room.description}</p>
       </div>
       <p className="flex items-center gap-2 pt-4">
-        <IoPeople /> {room.participants} participants
+        <IoPeople style={iconStyles} /> {room.participants}{" "}
+        participants
       </p>
     </div>
   );
