@@ -4,14 +4,14 @@ import Search from "./Search";
 
 const Navbar = () => {
   return (
-    <nav className="bg-star bg-cover">
+    <nav className="bg-dark border-b-2">
       <ul className="flex items-center justify-between px-8 py-2">
         <Link href="/">
           <Image
             className="cursor-pointer"
             src="/images/logo.png"
-            width={200}
-            height={48}
+            width={101}
+            height={71}
             alt="JazbaHana Logo"
           />
         </Link>
