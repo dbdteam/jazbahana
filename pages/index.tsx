@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Hero from "../components/Hero";
-import WhatIsJazbahana from "../components/WhatIsJazbahana";
-import Features from "../components/Features";
+import Hero from "../components/Home/Hero";
+import WhatIsJazbahana from "../components/Home/WhatIsJazbahana";
+import Features from "../components/Home/Features";
 import { useEffect, useState } from "react";
 import { supabase } from "../utils/supabaseClient";
 import Auth from "../components/Auth";
