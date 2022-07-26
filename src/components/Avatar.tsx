@@ -1,7 +1,7 @@
 /* eslint @next/next/no-img-element: 0 */
 import Image from "next/image";
 import { useState } from "react";
-import { supabase } from "../utils/supabaseClient";
+import { supabase } from "../lib/supabaseClient";
 
 interface AvatarParams {
   url: string;

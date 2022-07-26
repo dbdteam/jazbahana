@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Avatar from "../Avatar";
 import Link from "next/link";
-import { supabase } from "../../utils/supabaseClient";
+import { supabase } from "../../lib/supabaseClient";
 import Image from "next/image";
 import { gsap } from "gsap";
 

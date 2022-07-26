@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import EditAccount from "../../components/Account/Edit";
+import ViewAccount from "../../components/Account/View";
 import Auth from "../../components/Auth";
-import { supabase } from "../../utils/supabaseClient";
+import { supabase } from "../../lib/supabaseClient";
 
-export default function EditProfile() {
+export default function Profile() {
   const [session, setSession] = useState<any>(null);
 
   useEffect(() => {
@@ -15,16 +15,16 @@ export default function EditProfile() {
     });
   }, []);
 
+  if (!session) {
+    return <Auth />;
+  }
+
   return (
     <div>
       <Head>
-        <title>Edit Profile | Jazbahana</title>
+        <title>View Profile | Jazbahana</title>
       </Head>
-      {!session ? (
-        <Auth />
-      ) : (
-        <EditAccount key={session.user.id} session={session} />
-      )}
+      <ViewAccount key={session.user.id} session={session} />
     </div>
   );
 }
