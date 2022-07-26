@@ -15,18 +15,16 @@ export default function Profile() {
     });
   }, []);
 
+  if (!session) {
+    return <Auth />;
+  }
+
   return (
     <div>
       <Head>
         <title>View Profile | Jazbahana</title>
       </Head>
-      {!session ? (
-        <Auth />
-      ) : (
-        <div>
-          <ViewAccount key={session.user.id} session={session} />
-        </div>
-      )}
+      <ViewAccount key={session.user.id} session={session} />
     </div>
   );
 }
