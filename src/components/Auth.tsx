@@ -26,7 +26,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="max-w-[480px] bg-dark mx-auto my-20 text-left text-white rounded-[10px] p-10">
+    <div className="max-w-[480px] bg-dark mx-auto my-20 text-left rounded-[10px] p-10">
       <h1 className="mb-2 text-4xl font-bold">Sign In</h1>
       <p>This will send a magic link to your e-mail.</p>
       <div>
