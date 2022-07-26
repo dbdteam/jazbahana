@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import EditAccount from "../../components/Account/Edit";
 import Auth from "../../components/Auth";
@@ -16,12 +17,13 @@ export default function EditProfile() {
 
   return (
     <div>
+      <Head>
+        <title>Edit Profile | Jazbahana</title>
+      </Head>
       {!session ? (
         <Auth />
       ) : (
-        <div>
-          <EditAccount key={session.user.id} session={session} />
-        </div>
+        <EditAccount key={session.user.id} session={session} />
       )}
     </div>
   );
