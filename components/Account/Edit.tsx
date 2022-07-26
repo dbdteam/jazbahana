@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../utils/supabaseClient";
-import Avatar from "./Avatar";
+import { supabase } from "../../utils/supabaseClient";
+import Avatar from "../Avatar";
+import getProfile from "../../utils/getProfile";
 
 interface Profile {
   username: string;
@@ -8,42 +9,42 @@ interface Profile {
   avatar_url: string;
 }
 
-export default function Account({ session }: any) {
+export default function EditAccount({ session }: any) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [avatar_url, setAvatarUrl] = useState("");
 
   useEffect(() => {
-    getProfile();
+    getProfile(setLoading, setUsername, setBio, setAvatarUrl);
   }, [session]);
 
-  async function getProfile() {
-    try {
-      setLoading(true);
-      const user: any = supabase.auth.user();
+  // async function getProfile() {
+  //   try {
+  //     setLoading(true);
+  //     const user: any = supabase.auth.user();
 
-      let { data, error, status } = await supabase
-        .from("profiles")
-        .select(`username, bio, avatar_url`)
-        .eq("id", user.id)
-        .single();
+  //     let { data, error, status } = await supabase
+  //       .from("profiles")
+  //       .select(`username, bio, avatar_url`)
+  //       .eq("id", user.id)
+  //       .single();
 
-      if (error && status !== 406) {
-        throw error;
-      }
+  //     if (error && status !== 406) {
+  //       throw error;
+  //     }
 
-      if (data) {
-        setUsername(data.username);
-        setBio(data.bio);
-        setAvatarUrl(data.avatar_url);
-      }
-    } catch (error: any) {
-      alert(error.message);
-    } finally {
-      setLoading(false);
-    }
-  }
+  //     if (data) {
+  //       setUsername(data.username);
+  //       setBio(data.bio);
+  //       setAvatarUrl(data.avatar_url);
+  //     }
+  //   } catch (error: any) {
+  //     alert(error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   async function updateProfile({ username, bio, avatar_url }: Profile) {
     try {
