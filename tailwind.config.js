@@ -12,7 +12,7 @@ module.exports = {
         dark: "#212121",
         darker: "#181818",
         light: "#FFFFFF",
-        input: "#767676"
+        input: "#767676",
       },
       fontFamily: {
         montserrat: ["Montserrat", "italic"],
