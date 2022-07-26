@@ -21,12 +21,12 @@ export default function Auth() {
   };
 
   return (
-    <div className="max-w-[480px] mx-auto my-12 text-center">
-      <h1>Sign In | Jazbahana</h1>
-      <p>Sign in via magic link with your email below</p>
+    <div className="max-w-[480px] bg-dark mx-auto my-20 text-left text-white rounded-[10px] p-10">
+      <h1 className="mb-2 text-4xl font-bold">Sign In</h1>
+      <p>This will send a magic link to your e-mail.</p>
       <div>
         <input
-          className="text-2xl border-2 outline-none my-4 p-4"
+          className="text-xl text-dark border-2 rounded-md outline-none my-4 p-4 h-4 w-[90%]"
           type="email"
           placeholder="Your email"
           value={email}
@@ -35,7 +35,7 @@ export default function Auth() {
       </div>
       <div>
         <button
-          className="text-2xl my-4 sm:text-5xl rounded-md bg-primary text-light p-4"
+          className="text-xl w-[90%] sm:text-2xl rounded-md bg-primary text-light p-4"
           onClick={(e) => {
             e.preventDefault();
             handleLogin(email);
