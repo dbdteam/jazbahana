@@ -47,28 +47,29 @@ export default function Avatar({ url, size, onUpload = null }: AvatarParams) {
   }
 
   return (
-    <div className="flex justify-center py-4">
-      {url ? (
-        <img
-          src={publicURL}
-          alt="Avatar"
-          className="rounded-full object-cover"
-          style={{ height: size, width: size }}
-        />
-      ) : (
-        <Image
-          alt="default avatar"
-          src="/images/avatar.svg"
-          width={size}
-          height={size}
-          className="avatar no-image"
-          style={{ height: size, width: size }}
-        />
-      )}
+    <div>
+      <div className="flex justify-center py-4">
+        {url ? (
+          <img
+            src={publicURL}
+            alt="Avatar"
+            className="rounded-full object-cover"
+            style={{ height: size, width: size }}
+          />
+        ) : (
+          <Image
+            alt="default avatar"
+            src="/images/avatar.svg"
+            width={size}
+            height={size}
+            style={{ height: size, width: size }}
+          />
+        )}
+      </div>
       {onUpload ? (
-        <div style={{ width: size }}>
-          <label className="button primary block" htmlFor="single">
-            {uploading ? "Uploading ..." : "Upload"}
+        <div style={{ width: size }} className="mx-auto">
+          <label className="submit block" htmlFor="single">
+            {uploading ? "Uploading..." : "Upload"}
           </label>
           <input
             className="hidden absolute"
