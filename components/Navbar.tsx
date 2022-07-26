@@ -23,12 +23,12 @@ const Navbar = () => {
             placeholder="Search Notes, Rooms..."
           />
         </div>
-        <div className="flex text-2xl gap-4">
+        <div className="flex text-xl sm:text-2xl gap-4">
           <li>
-            <Link href="#signin">sign in</Link>
+            <Link href="/profile">profile</Link>
           </li>
           <li className="text-primary">
-            <Link href="#login">log in</Link>
+            <Link href="/rooms">rooms</Link>
           </li>
         </div>
       </ul>
