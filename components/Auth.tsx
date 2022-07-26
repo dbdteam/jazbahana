@@ -31,7 +31,7 @@ export default function Auth() {
       <p>This will send a magic link to your e-mail.</p>
       <div>
         <input
-          className="text-xl text-dark border-2 rounded-md outline-none my-4 p-4 h-4 w-[90%]"
+          className="text-xl border-2 rounded-md outline-none my-4 p-4 h-4 w-[90%]"
           type="email"
           placeholder="Your email"
           value={email}
