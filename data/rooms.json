@@ -1,26 +1,26 @@
 [
   {
-    "author": "urmom",
-    "title": "Urmom discussion",
+    "host": "urmom",
+    "created_at": "1 month, 1 week ago",
+    "name": "Urmom discussion",
     "description": "ur mom is a joke",
     "participants": 0,
-    "topics": "Urmom",
-    "date": "1 month, 1 week ago"
+    "topics": "Urmom"
   },
   {
-    "author": "admin",
-    "title": "Another Post",
+    "host": "admin",
+    "created_at": "1 month, 1 week ago",
+    "name": "Another Post",
     "description": "Just for the footer to not be that clumsy.",
     "participants": 0,
-    "topics": "Development",
-    "date": "1 month, 1 week ago"
+    "topics": "Development"
   },
   {
-    "author": "successful",
-    "title": "First Ever Post!",
+    "host": "successful",
+    "created_at": "1 month, 1 week ago",
+    "name": "First Ever Post!",
     "description": "Successful deployment on Heroku",
     "participants": 1,
-    "topics": "Development",
-    "date": "1 month, 1 week ago"
+    "topics": "Development"
   }
 ]
