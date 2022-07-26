@@ -12,10 +12,15 @@ module.exports = {
         dark: "#212121",
         darker: "#181818",
         light: "#FFFFFF",
+        input: "#767676"
       },
       fontFamily: {
-        iceberg: ["Iceberg", "sans-serif"],
         montserrat: ["Montserrat", "italic"],
+        "days-one": ["Days One", "sans-serif"],
+      },
+      backgroundImage: {
+        star: "url(/images/bg.jpg)",
+        wij: "url(/images/wij/bg.png)",
       },
     },
   },

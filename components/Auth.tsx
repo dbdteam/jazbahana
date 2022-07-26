@@ -35,7 +35,7 @@ export default function Auth() {
       </div>
       <div>
         <button
-          className="text-xl w-[90%] sm:text-2xl rounded-md bg-primary text-light p-4"
+          className="submit"
           onClick={(e) => {
             e.preventDefault();
             handleLogin(email);

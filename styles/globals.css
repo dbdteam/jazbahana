@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Iceberg&family=Montserrat:ital,wght@1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Days+One&family=Montserrat:ital,wght@1,500;1,700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +7,7 @@
 @layer base {
   html,
   body {
-    @apply font-sans bg-light dark:bg-dark dark:text-light;
+    @apply font-days-one bg-dark text-light scroll-smooth;
   }
   h1 {
     @apply text-2xl sm:text-5xl;
@@ -15,10 +15,18 @@
 }
 
 @layer components {
+  /* Features Component */
   .feature {
-    @apply font-sans flex justify-evenly flex-col sm:flex-row p-8 rounded-md items-center;
+    @apply flex justify-evenly flex-col sm:flex-row p-8 rounded-md items-center;
   }
   .feature > p {
     @apply mt-4 mx-4 text-2xl;
+  }
+  /* Buttons */
+  .main {
+    @apply text-2xl my-4 sm:text-5xl rounded-[13px] bg-transparent hover:bg-secondary duration-1000 border-[3px] border-secondary text-light p-4 sm:mt-24;
+  }
+  .submit {
+    @apply text-xl my-4 sm:text-2xl mx-auto rounded-md bg-primary p-2 w-[90%] sm:mr-4;
   }
 }
