@@ -1,35 +1,21 @@
 /* eslint @next/next/no-img-element: 0 */
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useState } from "react";
 import { supabase } from "../utils/supabaseClient";
 
 interface AvatarParams {
   url: string;
   size: number;
-  onUpload: any;
+  onUpload?: any;
 }
 
-export default function Avatar({ url, size, onUpload }: AvatarParams) {
-  const [avatarUrl, setAvatarUrl] = useState("");
+export default function Avatar({ url, size, onUpload = null }: AvatarParams) {
   const [uploading, setUploading] = useState(false);
 
-  useEffect(() => {
-    if (url) downloadImage(url);
-  }, [url]);
-
-  async function downloadImage(path: string) {
-    try {
-      const { data, error }: { data: any; error: any } = await supabase.storage
-        .from("avatars")
-        .download(path);
-      if (error) {
-        throw error;
-      }
-      const url = URL.createObjectURL(data);
-      setAvatarUrl(url);
-    } catch (error: any) {
-      console.log("Error downloading image: ", error.message);
-    }
-  }
+  const { publicURL, error }: any = supabase.storage
+    .from("avatars")
+    .getPublicUrl(url);
+  if (error) throw error;
 
   async function uploadAvatar(event: any) {
     try {
@@ -52,7 +38,7 @@ export default function Avatar({ url, size, onUpload }: AvatarParams) {
         throw uploadError;
       }
 
-      onUpload(filePath);
+      if (onUpload) onUpload(filePath);
     } catch (error: any) {
       alert(error.message);
     } finally {
@@ -61,36 +47,41 @@ export default function Avatar({ url, size, onUpload }: AvatarParams) {
   }
 
   return (
-    <div>
-      {avatarUrl ? (
+    <div className="flex justify-center py-4">
+      {url ? (
         <img
-          src={avatarUrl}
+          src={publicURL}
           alt="Avatar"
-          className="avatar image"
+          className="rounded-full object-cover"
           style={{ height: size, width: size }}
         />
       ) : (
-        <div
+        <Image
+          alt="default avatar"
+          src="/images/avatar.svg"
+          width={size}
+          height={size}
           className="avatar no-image"
           style={{ height: size, width: size }}
         />
       )}
-      <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
-          {uploading ? "Uploading ..." : "Upload"}
-        </label>
-        <input
-          style={{
-            visibility: "hidden",
-            position: "absolute",
-          }}
-          type="file"
-          id="single"
-          accept="image/*"
-          onChange={uploadAvatar}
-          disabled={uploading}
-        />
-      </div>
+      {onUpload ? (
+        <div style={{ width: size }}>
+          <label className="button primary block" htmlFor="single">
+            {uploading ? "Uploading ..." : "Upload"}
+          </label>
+          <input
+            className="hidden absolute"
+            type="file"
+            id="single"
+            accept="image/*"
+            onChange={uploadAvatar}
+            disabled={uploading}
+          />
+        </div>
+      ) : (
+        <div hidden={true}></div>
+      )}
     </div>
   );
 }

@@ -4,7 +4,8 @@ export default async function getProfile(
   setLoading: any,
   setUsername: any,
   setBio: any,
-  setAvatarUrl: any
+  setAvatarUrl: any,
+  setBalance: any
 ) {
   try {
     setLoading(true);
@@ -12,7 +13,7 @@ export default async function getProfile(
 
     let { data, error, status } = await supabase
       .from("profiles")
-      .select(`username, bio, avatar_url`)
+      .select(`username, bio, avatar_url, balance`)
       .eq("id", user.id)
       .single();
 
@@ -24,6 +25,7 @@ export default async function getProfile(
       setUsername(data.username);
       setBio(data.bio);
       setAvatarUrl(data.avatar_url);
+      setBalance(data.balance);
     }
   } catch (error: any) {
     alert(error.message);

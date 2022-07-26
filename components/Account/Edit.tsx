@@ -1,52 +1,26 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import Avatar from "../Avatar";
-import getProfile from "../../utils/getProfile";
-
-interface Profile {
-  username: string;
-  bio: string;
-  avatar_url: string;
-}
+import User from "../../interfaces/user";
+import fetchUser from "../../utils/fetchUser";
 
 export default function EditAccount({ session }: any) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [avatar_url, setAvatarUrl] = useState("");
+  const [user, setUser] = useState<User>({
+    username: "",
+    bio: "",
+    avatar_url: "",
+    balance: 300,
+  });
 
   useEffect(() => {
-    getProfile(setLoading, setUsername, setBio, setAvatarUrl);
+    fetchUser(session, setUser);
   }, [session]);
 
-  // async function getProfile() {
-  //   try {
-  //     setLoading(true);
-  //     const user: any = supabase.auth.user();
-
-  //     let { data, error, status } = await supabase
-  //       .from("profiles")
-  //       .select(`username, bio, avatar_url`)
-  //       .eq("id", user.id)
-  //       .single();
-
-  //     if (error && status !== 406) {
-  //       throw error;
-  //     }
-
-  //     if (data) {
-  //       setUsername(data.username);
-  //       setBio(data.bio);
-  //       setAvatarUrl(data.avatar_url);
-  //     }
-  //   } catch (error: any) {
-  //     alert(error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
-
-  async function updateProfile({ username, bio, avatar_url }: Profile) {
+  async function updateProfile({ username, bio, avatar_url, balance }: User) {
     try {
       setLoading(true);
       const user: any = supabase.auth.user();
@@ -56,6 +30,7 @@ export default function EditAccount({ session }: any) {
         username,
         bio,
         avatar_url,
+        balance,
         updated_at: new Date(),
       };
 
@@ -74,7 +49,7 @@ export default function EditAccount({ session }: any) {
   }
 
   return (
-    <div className="form-widget">
+    <div className="w-[50%] mx-auto bg-dark text-center">
       <Avatar
         url={avatar_url}
         size={150}
@@ -96,7 +71,7 @@ export default function EditAccount({ session }: any) {
       <div>
         <label htmlFor="username">Name</label>
         <input
-          className="text-2xl border-2 outline-none my-4 p-4"
+          className="text-dark text-2xl border-2 outline-none my-4 p-4"
           id="username"
           type="text"
           value={username || ""}
@@ -106,7 +81,7 @@ export default function EditAccount({ session }: any) {
       <div>
         <label htmlFor="bio">Bio</label>
         <textarea
-          className="text-2xl border-2 outline-none my-4 p-4"
+          className="text-dark text-2xl border-2 outline-none my-4 p-4"
           id="bio"
           value={bio || ""}
           onChange={(e) => setBio(e.target.value)}
@@ -115,20 +90,11 @@ export default function EditAccount({ session }: any) {
 
       <div>
         <button
-          className="text-2xl my-4 sm:text-5xl rounded-md bg-primary text-light p-4"
+          className="submit"
           onClick={() => updateProfile({ username, bio, avatar_url })}
           disabled={loading}
         >
           {loading ? "Loading ..." : "Update"}
-        </button>
-      </div>
-
-      <div>
-        <button
-          className="text-2xl my-4 sm:text-5xl rounded-md bg-primary text-light p-4"
-          onClick={() => supabase.auth.signOut()}
-        >
-          Sign Out
         </button>
       </div>
     </div>
