@@ -31,13 +31,13 @@
   }
   /* Buttons */
   .main {
-    @apply text-2xl my-4 sm:text-5xl rounded-[13px] bg-transparent hover:bg-secondary duration-1000 border-[3px] border-secondary p-4 sm:mt-24;
+    @apply text-2xl my-4 sm:text-5xl rounded-xl bg-transparent hover:bg-secondary duration-1000 border-[3px] border-secondary p-4 sm:mt-24;
   }
   .submit {
-    @apply text-xl my-4 sm:text-2xl mx-auto rounded-md bg-primary p-2 w-[90%] sm:mr-4;
+    @apply text-xl sm:my-4 sm:text-2xl mx-auto rounded-md bg-primary p-2 w-full;
   }
   .buttons {
-    @apply flex sm:flex-row flex-col sm:mx-16;
+    @apply flex mt-4 sm:flex-row flex-col w-[90%] mx-auto gap-4;
   }
   /* Form-Related */
   .labeled-input {

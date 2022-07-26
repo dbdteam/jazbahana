@@ -82,7 +82,7 @@ export default function EditAccount({ session }: any) {
             updateProfile({ username, bio, avatar_url: url });
           }}
         />
-        <p>{session.user.email}</p>
+        <p className="my-2">{session.user.email}</p>
 
         <div className="my-4">
           <div className="labeled-input">
