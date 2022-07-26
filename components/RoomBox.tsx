@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { IoPeople } from "react-icons/io5";
-import relativeTime from "../utils/relativeTime";
 
 interface RoomParams {
   id: string;
   host: string;
-  created_at: Date;
+  created_at: string;
   name: string;
   description: string;
   participants: number;
@@ -29,7 +28,7 @@ const RoomBox = ({ room }: { room: RoomParams }) => {
           </div>
           <span>@{room.host}</span>
         </a>
-        <span>Created {relativeTime(room.created_at)}</span>
+        <span>Created {room.created_at}</span>
       </div>
       <div className="border-b-2 py-4">
         <a href={`#room-${room.name}`} className="text-2xl">

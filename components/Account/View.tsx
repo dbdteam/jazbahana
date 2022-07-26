@@ -1,27 +1,49 @@
 /* eslint @next/next/no-img-element: 0 */
 import { useEffect, useState } from "react";
 import Avatar from "../Avatar";
-import User from "../../interfaces/user";
-import fetchUser from "../../utils/fetchUser";
 import Link from "next/link";
 import { supabase } from "../../utils/supabaseClient";
-import relativeTime from "../../utils/relativeTime";
 import Image from "next/image";
 import { gsap } from "gsap";
 
 export default function ViewAccount({ session }: any) {
-  const [user, setUser] = useState<User>({
-    id: "",
-    updated_at: new Date(),
-    username: "",
-    bio: "",
-    avatar_url: "",
-    balance: 300,
-  });
+  // const [loading, setLoading] = useState(true);
+  const [username, setUsername] = useState("");
+  const [bio, setBio] = useState("");
+  const [balance, setBalance] = useState("");
+  const [avatar_url, setAvatarUrl] = useState("");
 
   useEffect(() => {
-    fetchUser(session, setUser);
+    getProfile();
   }, [session]);
+
+  async function getProfile() {
+    try {
+      // setLoading(true);
+      const user: any = supabase.auth.user();
+
+      let { data, error, status } = await supabase
+        .from("profiles")
+        .select(`username, bio, avatar_url, balance`)
+        .eq("id", user.id)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setUsername(data.username);
+        setAvatarUrl(data.avatar_url);
+        setBio(data.bio);
+        setBalance(data.balance);
+      }
+    } catch (error: any) {
+      alert(error.message);
+    } finally {
+      // setLoading(false);
+    }
+  }
 
   gsap.to(".jp", {
     rotation: 360,
@@ -42,15 +64,14 @@ export default function ViewAccount({ session }: any) {
           />
         </div>
         <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl z-1">
-          <Avatar url={user.avatar_url} size={120} />
-          <h1 className="mb-2 text-xl sm:text-4xl">{user.username}</h1>
-          <p>Joined {relativeTime(user.updated_at)}</p>
+          <Avatar url={avatar_url} size={120} />
+          <h1 className="mb-2 text-xl sm:text-4xl">{username}</h1>
           <h3 className="text-left mx-4 sm:mx-16">Bio</h3>
           <div className="mx-4 sm:mx-16 bg-input bg-opacity-[50%] h-[128px] px-1 rounded-md text-left">
-            <p className="pt-2 pl-2">{user.bio}</p>
+            <p className="pt-2 pl-2">{bio}</p>
           </div>
           <h3 className="flex items-center text-left sm:mx-16 my-2 mx-4">
-            Balance: {user.balance}{" "}
+            Balance: {balance}{" "}
             <Image
               src="/images/features/jazbapoint.png"
               width={36}
