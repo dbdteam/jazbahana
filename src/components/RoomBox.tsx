@@ -15,7 +15,7 @@ const RoomBox = ({ room }: { room: RoomParams }) => {
   const iconStyles = { width: 24, height: 24 };
 
   return (
-    <div className="max-w-[720px] mx-auto my-10 bg-dark rounded-md p-5">
+    <div className="max-w-[720px] w-[90%] sm:w-[60%] mx-auto my-10 bg-dark rounded-md p-5">
       <div className="flex items-center justify-between">
         <a href={`#${room.host}`} className="flex items-center gap-2">
           <div className="border-2 border-primary rounded-full h-8">
@@ -28,7 +28,7 @@ const RoomBox = ({ room }: { room: RoomParams }) => {
           </div>
           <span>@{room.host}</span>
         </a>
-        <span>Created {room.created_at}</span>
+        <span>{room.created_at}</span>
       </div>
       <div className="border-b-2 py-4">
         <a href={`#room-${room.name}`} className="text-2xl">
