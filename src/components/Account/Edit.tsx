@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import Avatar from "../Avatar";
-import { EditableCredentials } from "../../interfaces/user";
 import Link from "next/link";
 
 export default function EditAccount({ session }: any) {

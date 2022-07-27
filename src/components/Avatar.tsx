@@ -3,13 +3,15 @@ import Image from "next/image";
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 
-interface AvatarParams {
+export default function Avatar({
+  url,
+  size,
+  onUpload = null,
+}: {
   url: string;
   size: number;
   onUpload?: any;
-}
-
-export default function Avatar({ url, size, onUpload = null }: AvatarParams) {
+}) {
   const [uploading, setUploading] = useState(false);
 
   const { publicURL, error }: any = supabase.storage

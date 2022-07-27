@@ -1,17 +1,7 @@
 import Image from "next/image";
 import { IoPeople } from "react-icons/io5";
 
-interface RoomParams {
-  id: string;
-  host: string;
-  created_at: string;
-  name: string;
-  description: string;
-  participants: number;
-  topics: string;
-}
-
-const RoomBox = ({ room }: { room: RoomParams }) => {
+const RoomBox = ({ room }: { room: Room }) => {
   const iconStyles = { width: 24, height: 24 };
 
   return (

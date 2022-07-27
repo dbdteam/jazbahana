@@ -1,4 +1,4 @@
-export default interface User {
+interface User {
   id: string;
   updated_at: Date;
   username: string;
@@ -7,7 +7,7 @@ export default interface User {
   balance?: number;
 }
 
-export interface EditableCredentials {
+interface EditableCredentials {
   username: string;
   bio: string;
   avatar_url: string;
