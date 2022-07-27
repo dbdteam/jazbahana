@@ -10,7 +10,7 @@
     @apply font-days-one bg-dark text-white scroll-smooth;
   }
   h1 {
-    @apply text-2xl sm:text-5xl;
+    @apply text-4xl;
   }
   input,
   textarea {
