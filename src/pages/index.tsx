@@ -1,11 +1,11 @@
+import { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import Head from "next/head";
+import { supabase } from "../lib/supabaseClient";
 import Hero from "../components/Home/Hero";
 import WhatIsJazbahana from "../components/Home/WhatIsJazbahana";
 import Features from "../components/Home/Features";
-import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
 import Auth from "../components/Auth";
+import Page from "../components/Main/Page";
 
 const Home: NextPage = () => {
   const [session, setSession] = useState<any>(null);
@@ -18,21 +18,14 @@ const Home: NextPage = () => {
     });
   }, []);
 
+  if (!session) return <Auth />;
+
   return (
-    <>
-      <Head>
-        <title>Home | Jazbahana</title>
-      </Head>
-      {!session ? (
-        <Auth />
-      ) : (
-        <main>
-          <Hero />
-          <WhatIsJazbahana />
-          <Features />
-        </main>
-      )}
-    </>
+    <Page title="Home">
+      <Hero />
+      <WhatIsJazbahana />
+      <Features />
+    </Page>
   );
 };
 

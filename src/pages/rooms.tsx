@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Page from "../components/Main/Page";
 import RoomBox from "../components/RoomBox";
 import rooms from "../data/rooms.json";
 
@@ -16,14 +16,11 @@ const Rooms = () => {
   // };
 
   return (
-    <div>
-      <Head>
-        <title>Rooms | Jazbahana</title>
-      </Head>
+    <Page title="Rooms">
       {rooms.map((room: any) => (
         <RoomBox key={room.name} room={room} />
       ))}
-    </div>
+    </Page>
   );
 };
 

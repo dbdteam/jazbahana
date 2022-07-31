@@ -1,7 +1,7 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import EditAccount from "../../components/Account/Edit";
 import Auth from "../../components/Auth";
+import Page from "../../components/Main/Page";
 import { supabase } from "../../lib/supabaseClient";
 
 export default function EditProfile() {
@@ -15,16 +15,11 @@ export default function EditProfile() {
     });
   }, []);
 
+  if (!session) return <Auth />;
+
   return (
-    <div>
-      <Head>
-        <title>Edit Profile | Jazbahana</title>
-      </Head>
-      {!session ? (
-        <Auth />
-      ) : (
-        <EditAccount key={session.user.id} session={session} />
-      )}
-    </div>
+    <Page title="Edit Profile">
+      <EditAccount key={session.user.id} session={session} />
+    </Page>
   );
 }

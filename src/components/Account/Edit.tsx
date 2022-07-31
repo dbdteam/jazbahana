@@ -104,15 +104,15 @@ export default function EditAccount({ session }: any) {
           </div>
 
           <div className="buttons">
-            <button className="submit">
-              <Link href="/profile">Back</Link>
-            </button>
+            <Link href="/profile">
+              <button className="submit">Back</button>
+            </Link>
             <button
               className="submit"
               onClick={() => updateProfile({ username, bio, avatar_url })}
               disabled={loading}
             >
-              {loading ? "Loading ..." : "Update"}
+              {loading ? "Loading..." : "Update"}
             </button>
           </div>
         </div>

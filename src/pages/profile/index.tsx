@@ -1,7 +1,7 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import ViewAccount from "../../components/Account/View";
 import Auth from "../../components/Auth";
+import Page from "../../components/Main/Page";
 import { supabase } from "../../lib/supabaseClient";
 
 export default function Profile() {
@@ -15,16 +15,11 @@ export default function Profile() {
     });
   }, []);
 
-  if (!session) {
-    return <Auth />;
-  }
+  if (!session) return <Auth />;
 
   return (
-    <div>
-      <Head>
-        <title>View Profile | Jazbahana</title>
-      </Head>
+    <Page title="Profile">
       <ViewAccount key={session.user.id} session={session} />
-    </div>
+    </Page>
   );
 }
