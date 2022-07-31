@@ -3,7 +3,7 @@ import Image from "next/image";
 function Features() {
   return (
     <div className="text-center py-24 bg-star bg-cover">
-      <h1 className="text-secondary pb-5 font-bold">Features</h1>
+      <h1 className="text-primary pb-5 font-bold">Features</h1>
       <div className="grid grid-cols-1 my-12 max-w-[1080px] mx-auto">
         <div className="feature">
           <Image
