@@ -26,19 +26,19 @@ export default function Auth() {
   };
 
   return (
-    <div className="w-[90%] sm:w-[50%] bg-dark mx-auto my-20 text-left rounded-xl p-10">
+    <div className="w-[90%] sm:w-[50%] bg-dark mx-auto my-40 text-left rounded-xl p-10">
       <h1 className="mb-2 text-4xl font-bold">Sign In</h1>
       <p>This will send a magic link to your e-mail.</p>
       <div>
         <input
-          className="text-xl border-2 rounded-md outline-none mt-4 py-2 px-4"
+          className="w-full my-4 text-xl border-2 rounded-md outline-none mt-4 py-2 px-4"
           type="email"
           placeholder="Your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <button
-          className="submit"
+          className="submit w-full"
           onClick={(e) => {
             e.preventDefault();
             handleLogin(email);
