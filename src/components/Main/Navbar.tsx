@@ -10,8 +10,8 @@ const Navbar = () => {
           <Image
             className="cursor-pointer"
             src="/images/logo.png"
-            width={101}
-            height={71}
+            width={75}
+            height={52}
             alt="JazbaHana Logo"
           />
         </Link>
