@@ -3,39 +3,17 @@ function Footer() {
     <footer className="font-sans text-center bg-dark border-t-2">
       <ul className="flex justify-around py-4">
         <li>
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://github.com/jolshylar"
-          >
+          <a target="_blank" rel="noreferrer" href="https://github.com/dbdteam">
             Github
           </a>
         </li>
         <li>
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://discord.com/invite/6dSpCGtJuB"
-          >
-            Discord
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://instagram.com/jolshylar"
-          >
-            Instagram
-          </a>
-        </li>
-        <li>
-          <a target="_blank" rel="noreferrer" href="mailto:jolshylar@gmail.com">
+          <a target="_blank" rel="noreferrer" href="mailto:ozgdastan@gmail.com">
             E-mail
           </a>
         </li>
       </ul>
-      <div className="py-4">&copy; Jolshylar 2022. All rights reserved.</div>
+      <div className="py-4">&copy; DBD Team 2022. All rights reserved.</div>
     </footer>
   );
 }
