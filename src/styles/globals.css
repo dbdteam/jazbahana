@@ -34,13 +34,17 @@
     @apply text-2xl my-4 sm:text-5xl rounded-xl bg-transparent hover:bg-secondary duration-1000 border-[3px] border-secondary p-4 sm:mt-24;
   }
   .submit {
-    @apply text-xl sm:my-4 sm:text-2xl mx-auto rounded-md bg-primary p-2 w-full;
+    @apply text-xl sm:text-2xl mx-auto rounded-md bg-primary p-2 w-[90%];
   }
   .buttons {
-    @apply flex mt-4 sm:flex-row flex-col w-[90%] mx-auto gap-4;
+    @apply flex mt-4 flex-col mx-auto gap-4;
   }
   /* Form-Related */
   .labeled-input {
     @apply flex flex-col text-left w-[90%] mx-auto;
+  }
+  .labeled-input > input,
+  .labeled-input > textarea {
+    @apply my-2;
   }
 }
