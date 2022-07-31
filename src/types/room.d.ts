@@ -1,5 +1,5 @@
 interface Room {
-  id: string;
+  id?: string;
   host: string;
   created_at: string;
   name: string;

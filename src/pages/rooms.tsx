@@ -17,7 +17,7 @@ const Rooms = () => {
 
   return (
     <Page title="Rooms">
-      {rooms.map((room: any) => (
+      {rooms.map((room: Room) => (
         <RoomBox key={room.name} room={room} />
       ))}
     </Page>

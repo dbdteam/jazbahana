@@ -1,6 +1,6 @@
 interface User {
   id: string;
-  updated_at: Date;
+  updated_at?: Date;
   username: string;
   bio: string;
   avatar_url: string;

@@ -20,7 +20,7 @@ export default function ViewAccount({ session }: any) {
   async function getProfile() {
     try {
       setLoading(true);
-      const user: any = supabase.auth.user();
+      const user = supabase.auth.user()!;
 
       let { data, error, status } = await supabase
         .from("profiles")
@@ -63,7 +63,7 @@ export default function ViewAccount({ session }: any) {
       <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl z-1">
         <Avatar url={avatar_url} size={120} />
         <h1 className="mb-2 text-xl sm:text-4xl">{username}</h1>
-        <h3 className="text-left mx-4 sm:mx-16">Bio</h3>
+        <h3 className="text-left mx-4 my-2 sm:mx-16">Bio</h3>
         <div className="mx-4 sm:mx-16 bg-input bg-opacity-[50%] h-[128px] px-1 rounded-md text-left">
           <p className="pt-2 pl-2">{bio}</p>
         </div>
