@@ -16,7 +16,6 @@ export default function EditProfile() {
   }, []);
 
   if (!session) return <Auth />;
-
   return (
     <Page title="Edit Profile">
       <EditAccount key={session.user.id} session={session} />

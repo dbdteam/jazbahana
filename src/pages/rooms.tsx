@@ -1,20 +1,23 @@
+import { useEffect, useState } from "react";
+import Auth from "../components/Auth";
 import Page from "../components/Main/Page";
 import RoomBox from "../components/RoomBox";
 import rooms from "../data/rooms.json";
+import { supabase } from "../lib/supabaseClient";
 
 const Rooms = () => {
-  // const [rooms, setRooms] = useState<any>([]);
 
-  // useEffect(() => {
-  //   fetchRooms();
-  // }, []);
+  const [session, setSession] = useState<any>(null);
 
-  // const fetchRooms = async () => {
-  //   let { data: rooms, error } = await supabase.from("rooms").select("*");
-  //   if (error) console.log("error", error);
-  //   else setRooms(rooms);
-  // };
+  useEffect(() => {
+    setSession(supabase.auth.session());
 
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
+
+  if (!session) return <Auth />;
   return (
     <Page title="Rooms">
       {rooms.map((room: Room) => (

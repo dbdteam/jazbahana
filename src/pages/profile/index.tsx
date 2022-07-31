@@ -16,7 +16,6 @@ export default function Profile() {
   }, []);
 
   if (!session) return <Auth />;
-
   return (
     <Page title="Profile">
       <ViewAccount key={session.user.id} session={session} />
