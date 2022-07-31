@@ -5,8 +5,10 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { supabase } from "../../lib/supabaseClient";
 import Avatar from "../Avatar";
+import { useRouter } from "next/router";
 
 export default function ViewAccount({ session }: any) {
+  const { push } = useRouter();
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
@@ -42,6 +44,11 @@ export default function ViewAccount({ session }: any) {
       setLoading(false);
     }
   }
+
+  const handleSignOut = () => {
+    supabase.auth.signOut();
+    push("/");
+  };
 
   gsap.to(".jp", {
     rotation: 360,
@@ -80,7 +87,7 @@ export default function ViewAccount({ session }: any) {
           <Link href="/profile/edit/">
             <button className="submit">Edit</button>
           </Link>
-          <button className="submit" onClick={() => supabase.auth.signOut()}>
+          <button className="submit" onClick={handleSignOut}>
             Sign Out
           </button>
         </div>
