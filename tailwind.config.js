@@ -13,7 +13,6 @@ module.exports = {
         input: "#767676",
       },
       fontFamily: {
-        montserrat: ["Montserrat", "italic"],
         "days-one": ["Days One", "sans-serif"],
       },
       backgroundImage: {

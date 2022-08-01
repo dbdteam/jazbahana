@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Days+One&family=Montserrat:ital,wght@1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -31,17 +31,17 @@
   }
   /* Buttons */
   .main {
-    @apply text-2xl my-4 sm:text-5xl rounded-xl bg-transparent hover:bg-secondary duration-1000 border-[3px] border-secondary p-4 sm:mt-24;
+    @apply text-2xl my-4 sm:text-5xl rounded-xl bg-transparent bg-primary p-4 sm:mt-24;
   }
   .submit {
-    @apply text-xl sm:text-2xl mx-auto rounded-md bg-primary p-2 w-[90%];
+    @apply text-xl sm:text-2xl mx-auto rounded-md bg-primary p-2 w-full;
   }
   .buttons {
     @apply flex mt-4 flex-col mx-auto gap-4;
   }
   /* Form-Related */
   .labeled-input {
-    @apply flex flex-col text-left w-[90%] mx-auto;
+    @apply flex flex-col text-left;
   }
   .labeled-input > input,
   .labeled-input > textarea {
