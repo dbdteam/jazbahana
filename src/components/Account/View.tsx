@@ -50,46 +50,33 @@ export default function ViewAccount({ session }: any) {
     push("/");
   };
 
-  gsap.to(".jp", {
-    rotation: 360,
-    duration: 5,
-    x: "120%",
-    y: 200,
-  });
-
   return (
     <div className="py-16">
-      <div className="jp absolute">
-        <Image
-          src="/images/features/jazbapoint.png"
-          width={150}
-          height={150}
-          alt="Economy Feature"
-        />
-      </div>
       <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl z-1">
-        <Avatar url={avatar_url} size={120} />
-        <h1 className="mb-2 text-xl sm:text-4xl">{username}</h1>
-        <h3 className="text-left mx-4 my-2 sm:mx-16">Bio</h3>
-        <div className="mx-4 sm:mx-16 bg-input bg-opacity-[50%] h-[128px] px-1 rounded-md text-left">
-          <p className="pt-2 pl-2">{bio}</p>
-        </div>
-        <h3 className="flex items-center text-left sm:mx-16 my-2 mx-4">
-          Balance: {balance}
-          <Image
-            src="/images/features/jazbapoint.png"
-            width={36}
-            height={36}
-            alt="Economy Feature"
-          />
-        </h3>
-        <div className="buttons">
-          <Link href="/profile/edit/">
-            <button className="submit">Edit</button>
-          </Link>
-          <button className="submit" onClick={handleSignOut}>
-            Sign Out
-          </button>
+        <div className="w-[90%] mx-auto">
+          <Avatar url={avatar_url} size={120} />
+          <h1 className="mb-2 text-xl sm:text-4xl">{username}</h1>
+          <h3 className="text-left my-2">Bio</h3>
+          <div className="bg-input bg-opacity-[50%] h-[128px] px-1 rounded-md text-left">
+            <p className="pt-2 pl-2">{bio}</p>
+          </div>
+          <h3 className="flex items-center text-left my-2">
+            Balance: {balance}
+            <Image
+              src="/images/features/jazbapoint.png"
+              width={36}
+              height={36}
+              alt="Economy Feature"
+            />
+          </h3>
+          <div className="buttons">
+            <Link href="/profile/edit/">
+              <button className="submit">Edit</button>
+            </Link>
+            <button className="submit" onClick={handleSignOut}>
+              Sign Out
+            </button>
+          </div>
         </div>
       </div>
     </div>

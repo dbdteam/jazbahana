@@ -73,47 +73,49 @@ export default function EditAccount({ session }: any) {
   return (
     <div className="py-16">
       <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl">
-        <Avatar
-          url={avatar_url}
-          size={120}
-          onUpload={(url: string) => {
-            setAvatarUrl(url);
-            updateProfile({ username, bio, avatar_url: url });
-          }}
-        />
-        <p className="my-2">{session.user.email}</p>
+        <div className="w-[90%] mx-auto">
+          <Avatar
+            url={avatar_url}
+            size={120}
+            onUpload={(url: string) => {
+              setAvatarUrl(url);
+              updateProfile({ username, bio, avatar_url: url });
+            }}
+          />
+          <p className="my-2">{session.user.email}</p>
 
-        <div className="my-4">
-          <div className="labeled-input">
-            <label htmlFor="username">Username</label>
-            <input
-              className="text-xl mb-4 p-4"
-              id="username"
-              type="text"
-              value={username || ""}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-          <div className="labeled-input">
-            <label htmlFor="bio">Bio</label>
-            <textarea
-              id="bio"
-              value={bio || ""}
-              onChange={(e) => setBio(e.target.value)}
-            />
-          </div>
+          <div className="my-4">
+            <div className="labeled-input">
+              <label htmlFor="username">Username</label>
+              <input
+                className="text-xl mb-4 p-4"
+                id="username"
+                type="text"
+                value={username || ""}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div className="labeled-input">
+              <label htmlFor="bio">Bio</label>
+              <textarea
+                id="bio"
+                value={bio || ""}
+                onChange={(e) => setBio(e.target.value)}
+              />
+            </div>
 
-          <div className="buttons">
-            <Link href="/profile">
-              <button className="submit">Back</button>
-            </Link>
-            <button
-              className="submit"
-              onClick={() => updateProfile({ username, bio, avatar_url })}
-              disabled={loading}
-            >
-              {loading ? "Loading..." : "Update"}
-            </button>
+            <div className="buttons">
+              <Link href="/profile">
+                <button className="submit">Back</button>
+              </Link>
+              <button
+                className="submit"
+                onClick={() => updateProfile({ username, bio, avatar_url })}
+                disabled={loading}
+              >
+                {loading ? "Loading..." : "Update"}
+              </button>
+            </div>
           </div>
         </div>
       </div>
