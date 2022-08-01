@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Head from "next/head";
-import Navbar from "./Navbar";
+import Header from "./Header";
 import Footer from "./Footer";
 
 const Layout = ({ children }: { children: ReactNode }) => {
@@ -18,7 +18,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <meta name="og:title" content="Jazbahana - Get Notes Faster" />
         <title>Jazbahana - Get Notes Faster</title>
       </Head>
-      <Navbar />
+      <Header />
       {children}
       <Footer />
     </main>

@@ -24,7 +24,7 @@ const Navbar = () => {
           <Image
             className="cursor-pointer"
             src="/images/logo.png"
-            width={75}
+            width={55}
             height={52}
             alt="JazbaHana Logo"
           />
