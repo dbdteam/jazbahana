@@ -8,14 +8,37 @@ import Search from "./Search";
 const Navbar = () => {
   const { push } = useRouter();
   const [session, setSession] = useState<any>(null);
+  const [username, setUsername] = useState(null);
+  const [avatar_url, setAvatarUrl] = useState(null);
 
   useEffect(() => {
+    getProfile();
     setSession(supabase.auth.session());
 
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
-  }, []);
+  }, [session]);
+
+  async function getProfile() {
+    try {
+      const user = supabase.auth.user();
+      if (!user) return;
+
+      const { data } = await supabase
+        .from("profiles")
+        .select(`username, avatar_url`)
+        .eq("id", user?.id)
+        .single();
+
+      if (data) {
+        setUsername(data.username);
+        setAvatarUrl(data.avatar_url);
+      }
+    } catch (error: any) {
+      alert(error.message);
+    }
+  }
 
   return (
     <nav className="bg-dark border-b-2">
@@ -33,7 +56,7 @@ const Navbar = () => {
         {session ? (
           <div className="flex text-xl sm:text-2xl gap-4">
             <li>
-              <Link href="/profile">profile</Link>
+              <Link href={`/profile/${username}`}>profile</Link>
             </li>
             <li className="text-primary">
               <Link href="/rooms">rooms</Link>
