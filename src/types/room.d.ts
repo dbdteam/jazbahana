@@ -1,7 +1,7 @@
 interface Room {
   id?: string;
-  host: string;
-  created_at: string;
+  host_id: string;
+  created_at: Date;
   name: string;
   description: string;
   participants: number;
