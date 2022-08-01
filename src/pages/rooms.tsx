@@ -6,7 +6,6 @@ import rooms from "../data/rooms.json";
 import { supabase } from "../lib/supabaseClient";
 
 const Rooms = () => {
-
   const [session, setSession] = useState<any>(null);
 
   useEffect(() => {

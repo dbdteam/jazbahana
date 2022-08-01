@@ -7,7 +7,7 @@ const RoomBox = ({ room }: { room: Room }) => {
   return (
     <div className="max-w-[720px] w-[90%] sm:w-[60%] mx-auto my-10 bg-dark rounded-md p-5">
       <div className="flex items-center justify-between">
-        <a href={`#${room.host}`} className="flex items-center gap-2">
+        <a href={`#${room.host.username}`} className="flex items-center gap-2">
           <div className="border-2 border-primary rounded-full h-8">
             <Image
               src="/images/avatar.svg"
@@ -16,7 +16,7 @@ const RoomBox = ({ room }: { room: Room }) => {
               height={28}
             />
           </div>
-          <span>@{room.host}</span>
+          <span>@{room.host.username}</span>
         </a>
         <span>{room.created_at}</span>
       </div>

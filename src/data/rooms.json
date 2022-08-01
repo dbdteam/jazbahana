@@ -1,6 +1,7 @@
 [
   {
-    "host": "urmom",
+    "host": { "username": "urmom" },
+    "host_id": "1",
     "created_at": "1 month, 1 week ago",
     "name": "Urmom discussion",
     "description": "ur mom is a joke",
@@ -8,7 +9,8 @@
     "topics": "Urmom"
   },
   {
-    "host": "admin",
+    "host": { "username": "admin" },
+    "host_id": "1",
     "created_at": "1 month, 1 week ago",
     "name": "Another Post",
     "description": "Just for the footer to not be that clumsy.",
@@ -16,7 +18,8 @@
     "topics": "Development"
   },
   {
-    "host": "successful",
+    "host": { "username": "successful" },
+    "host_id": "1",
     "created_at": "1 month, 1 week ago",
     "name": "First Ever Post!",
     "description": "Successful deployment on Heroku",

@@ -1,9 +1,10 @@
 interface Room {
   id?: string;
+  host: { username: string };
   host_id: string;
-  created_at: Date;
+  created_at: any;
   name: string;
   description: string;
-  participants: number;
+  participants: any;
   topics: string;
 }
