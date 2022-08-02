@@ -31,7 +31,7 @@
   }
   /* Buttons */
   .main {
-    @apply text-2xl my-4 sm:text-5xl rounded-xl bg-transparent bg-primary p-4 sm:mt-24;
+    @apply text-2xl my-4 sm:text-4xl rounded-xl bg-transparent bg-primary p-4 sm:mt-24;
   }
   .submit {
     @apply text-xl sm:text-2xl mx-auto rounded-md bg-primary p-2 w-full;
