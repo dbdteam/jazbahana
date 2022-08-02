@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-function Features() {
+export default function Features() {
   return (
     <div className="text-center py-24 bg-star bg-cover">
       <h1 className="text-primary pb-5 font-bold">Features</h1>
@@ -54,5 +54,3 @@ function Features() {
     </div>
   );
 }
-
-export default Features;

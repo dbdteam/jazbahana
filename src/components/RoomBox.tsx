@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { IoPeople } from "react-icons/io5";
 
-const RoomBox = ({ room }: { room: Room }) => {
+export default function RoomBox({ room }: { room: Room }) {
   const iconStyles = { width: 24, height: 24 };
 
   return (
@@ -31,6 +31,4 @@ const RoomBox = ({ room }: { room: Room }) => {
       </p>
     </div>
   );
-};
-
-export default RoomBox;
+}

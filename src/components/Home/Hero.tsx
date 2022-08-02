@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Hero = () => {
+export default function Hero() {
   return (
     <div className="uppercase flex flex-col md:flex-row items-center justify-center gap-8 py-24 bg-star bg-cover">
       <div className="p-4">
@@ -20,6 +20,4 @@ const Hero = () => {
       />
     </div>
   );
-};
-
-export default Hero;
+}
