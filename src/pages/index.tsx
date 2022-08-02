@@ -1,11 +1,10 @@
-import type { NextPage } from "next";
 import Hero from "../components/Home/Hero";
 import WhatIsJazbahana from "../components/Home/WhatIsJazbahana";
 import Features from "../components/Home/Features";
-import Page from "../components/Main/Page";
+import Page from "../components/Layout/Page";
 import ReadyToStart from "../components/Home/ReadyToStart";
 
-const Home: NextPage = () => {
+export default function Home() {
   return (
     <Page title="Home">
       <Hero />
@@ -14,6 +13,4 @@ const Home: NextPage = () => {
       <ReadyToStart />
     </Page>
   );
-};
-
-export default Home;
+}

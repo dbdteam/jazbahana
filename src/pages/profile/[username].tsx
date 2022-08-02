@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Avatar from "../../components/Avatar";
-import Page from "../../components/Main/Page";
+import Page from "../../components/Layout/Page";
 import { supabase } from "../../lib/supabaseClient";
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {

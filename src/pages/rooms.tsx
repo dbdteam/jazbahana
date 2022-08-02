@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Auth from "../components/Auth";
-import Page from "../components/Main/Page";
+import Page from "../components/Layout/Page";
 import RoomBox from "../components/RoomBox";
 import rooms from "../data/rooms.json";
 import { supabase } from "../lib/supabaseClient";
 
-const Rooms = () => {
+export default function Rooms() {
   const [session, setSession] = useState<any>(null);
 
   useEffect(() => {
@@ -19,11 +19,9 @@ const Rooms = () => {
   if (!session) return <Auth />;
   return (
     <Page title="Rooms">
-      {rooms.map((room: Room) => (
+      {rooms.map((room) => (
         <RoomBox key={room.name} room={room} />
       ))}
     </Page>
   );
-};
-
-export default Rooms;
+}

@@ -7,7 +7,7 @@
 @layer base {
   html,
   body {
-    @apply font-days-one bg-dark text-white scroll-smooth;
+    @apply font-days-one bg-star bg-cover text-white scroll-smooth;
   }
   h1 {
     @apply text-4xl;

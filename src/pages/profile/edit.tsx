@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Auth from "../../components/Auth";
 import Avatar from "../../components/Avatar";
-import Page from "../../components/Main/Page";
+import Page from "../../components/Layout/Page";
 import { supabase } from "../../lib/supabaseClient";
 
 export default function EditProfile() {
