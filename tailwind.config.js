@@ -11,6 +11,7 @@ module.exports = {
         secondary: "#F7CB0E",
         dark: "#212121",
         input: "#767676",
+        "space-black": "#0d0c0c",
       },
       fontFamily: {
         "days-one": ["Days One", "sans-serif"],
