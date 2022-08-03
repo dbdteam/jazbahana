@@ -25,11 +25,13 @@ export default function Layout({ children }: { children: ReactNode }) {
   async function getProfile() {
     if (!user) return;
     try {
-      const { data } = await supabase
+      const { data, error, status } = await supabase
         .from<Profile>("profiles")
         .select(`username`)
         .eq("id", user?.id)
         .single();
+      
+      if (error && status !== 406) throw error
 
       if (data) {
         setProfile(data);

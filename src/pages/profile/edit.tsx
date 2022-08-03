@@ -1,10 +1,10 @@
 import { Session, User } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { withPageAuth } from "@supabase/auth-helpers-nextjs";
 import Avatar from "../../components/Avatar";
 import Page from "../../components/Layout/Page";
 import { supabase } from "../../lib/supabaseClient";
-import { withPageAuth } from "@supabase/auth-helpers-nextjs";
 
 export default function EditProfile() {
   const [session, setSession] = useState<Session | null>(
@@ -40,9 +40,7 @@ export default function EditProfile() {
         .eq("id", user?.id)
         .single();
 
-      if (error && status !== 406) {
-        throw error;
-      }
+      if (error && status !== 406) throw error;
 
       if (profile) {
         setUsername(profile.username);
