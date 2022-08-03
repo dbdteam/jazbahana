@@ -1,3 +1,4 @@
+import type { Session } from "@supabase/supabase-js";
 import type { GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,13 +20,13 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   return { props: { user } };
 }
 
-export default function Profile({ user }: { user: User }) {
-  const [session, setSession] = useState<any>(null);
+export default function Profile({ user }: { user: Profile }) {
+  const [session, setSession] = useState<Session | null>(
+    supabase.auth.session()
+  );
 
   useEffect(() => {
-    setSession(supabase.auth.session());
-
-    supabase.auth.onAuthStateChange((_event, session) => {
+    supabase.auth.onAuthStateChange(async (_event, session) => {
       setSession(session);
     });
   }, []);

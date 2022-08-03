@@ -1,12 +1,16 @@
-import Link from "next/link";
+import { Session, User } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import Auth from "../../components/Auth";
+import Link from "next/link";
 import Avatar from "../../components/Avatar";
 import Page from "../../components/Layout/Page";
 import { supabase } from "../../lib/supabaseClient";
+import { withPageAuth } from "@supabase/auth-helpers-nextjs";
 
 export default function EditProfile() {
-  const [session, setSession] = useState<any>(null);
+  const [session, setSession] = useState<Session | null>(
+    supabase.auth.session()
+  );
+  const [user, setUser] = useState<User | null>(session?.user ?? null);
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
@@ -15,32 +19,35 @@ export default function EditProfile() {
   useEffect(() => {
     getProfile();
 
-    setSession(supabase.auth.session());
-
-    supabase.auth.onAuthStateChange((_event, session) => {
+    supabase.auth.onAuthStateChange(async (_event, session) => {
       setSession(session);
+      setUser(session?.user ?? null);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 
   async function getProfile() {
     try {
       setLoading(true);
-      const user = supabase.auth.user()!;
 
-      let { data, error, status } = await supabase
-        .from("profiles")
+      let {
+        data: profile,
+        error,
+        status,
+      } = await supabase
+        .from<Profile>("profiles")
         .select(`username, bio, avatar_url`)
-        .eq("id", user.id)
+        .eq("id", user?.id)
         .single();
 
       if (error && status !== 406) {
         throw error;
       }
 
-      if (data) {
-        setUsername(data.username);
-        setBio(data.bio);
-        setAvatarUrl(data.avatar_url);
+      if (profile) {
+        setUsername(profile.username);
+        setBio(profile.bio);
+        setAvatarUrl(profile.avatar_url);
       }
     } catch (error: any) {
       alert(error.message);
@@ -53,13 +60,16 @@ export default function EditProfile() {
     username,
     bio,
     avatar_url,
-  }: EditableCredentials) {
+  }: {
+    username: string;
+    bio: string;
+    avatar_url: string;
+  }) {
     try {
       setLoading(true);
-      const user = supabase.auth.user()!;
 
       const updates = {
-        id: user.id,
+        id: user?.id,
         username,
         bio,
         avatar_url,
@@ -79,7 +89,6 @@ export default function EditProfile() {
     }
   }
 
-  if (!session) return <Auth />;
   return (
     <Page title="Edit Profile">
       <div className="py-16">
@@ -93,7 +102,7 @@ export default function EditProfile() {
                 updateProfile({ username, bio, avatar_url: url });
               }}
             />
-            <p className="my-2">{session.user.email}</p>
+            <p className="my-2">{user?.email}</p>
 
             <div className="my-4">
               <div className="labeled-input">
@@ -134,3 +143,5 @@ export default function EditProfile() {
     </Page>
   );
 }
+
+export const getServerSideProps = withPageAuth({ redirectTo: "/login" });

@@ -1,3 +1,4 @@
+import type { Session, User } from "@supabase/supabase-js";
 import { ReactNode, useEffect, useState } from "react";
 import Head from "next/head";
 import Header from "./Header";
@@ -5,31 +6,33 @@ import Footer from "./Footer";
 import { supabase } from "../../lib/supabaseClient";
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<any>(null);
-  const [username, setUsername] = useState<string>("");
+  const [session, setSession] = useState<Session | null>(
+    supabase.auth.session()
+  );
+  const [user, setUser] = useState<User | null>(session?.user ?? null);
+  const [profile, setProfile] = useState<Profile | null>(null);
 
   useEffect(() => {
     getProfile();
-    setSession(supabase.auth.session());
 
-    supabase.auth.onAuthStateChange((_event, session) => {
+    supabase.auth.onAuthStateChange(async (_event, session) => {
       setSession(session);
+      setUser(session?.user ?? null);
     });
-  }, [session]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   async function getProfile() {
+    if (!user) return;
     try {
-      const user = supabase.auth.user();
-      if (!user) return;
-
       const { data } = await supabase
-        .from("profiles")
+        .from<Profile>("profiles")
         .select(`username`)
         .eq("id", user?.id)
         .single();
 
       if (data) {
-        setUsername(data.username);
+        setProfile(data);
       }
     } catch (error: any) {
       alert(error.message);
@@ -40,7 +43,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     ? [
         {
           label: "Profile",
-          href: `/profile/${username}`,
+          href: `/profile/${profile?.username}`,
         },
         {
           label: "Rooms",
@@ -49,8 +52,8 @@ export default function Layout({ children }: { children: ReactNode }) {
       ]
     : [
         {
-          label: "Sign In",
-          href: "/profile/edit",
+          label: "Log In",
+          href: "/login",
         },
       ];
 
