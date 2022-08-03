@@ -8,9 +8,9 @@ export default function Hero() {
         <h1>Having problems with school?</h1>
         <h1 className="my-4">Easily trade your notes</h1>
         <h1 className="text-secondary">with Jazbahana</h1>
-        <button className="main">
-          <Link href="#what-is-jazbahana">GET STARTED &rarr;</Link>
-        </button>
+        <Link href="#what-is-jazbahana">
+          <button className="main">GET STARTED &rarr;</button>
+        </Link>
       </div>
       <Image
         src="/images/jp-card.png"
