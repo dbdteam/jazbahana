@@ -1,10 +1,12 @@
 interface Room {
   id?: string;
-  host: { username: string };
+  // Foreign field that uses host_id
+  profiles: { username: string; avatar_url: string };
   host_id: string;
-  created_at: any;
+  created_at: string;
   name: string;
-  description: string;
-  participants: any;
-  topics: string;
+  description?: string;
+  private: boolean;
+  // participants: any;
+  // topics: string;
 }
