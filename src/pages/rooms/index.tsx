@@ -1,6 +1,6 @@
 import { supabaseClient, withPageAuth } from "@supabase/auth-helpers-nextjs";
-import Page from "../components/Layout/Page";
-import RoomBox from "../components/Rooms/RoomBox";
+import Page from "../../components/Layout/Page";
+import RoomBox from "../../components/Rooms/RoomBox";
 
 export default function Rooms({ rooms }: { rooms: Room[] }) {
   return (
