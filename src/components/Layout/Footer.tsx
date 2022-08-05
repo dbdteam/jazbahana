@@ -1,13 +1,12 @@
+import { IconGitHub, IconMail } from "@supabase/ui";
 import Image from "next/image";
 import Link from "next/link";
-import { IoLogoGithub, IoMail } from "react-icons/io5";
 
 export default function Footer({
   links,
 }: {
   links: { label: string; href: string }[];
 }) {
-  const iconStyles = { width: 36, height: 36 };
   const items = links.map((link) => (
     <Link key={link.label} href={link.href}>
       {link.label}
@@ -30,10 +29,10 @@ export default function Footer({
       <div className="flex gap-4 text-lg">{items}</div>
       <div className="flex gap-4">
         <a target="_blank" rel="noreferrer" href="https://github.com/dbdteam">
-          <IoLogoGithub style={iconStyles} />
+          <IconGitHub size={32} strokeWidth={2} />
         </a>
         <a target="_blank" rel="noreferrer" href="mailto:ozgdastan@gmail.com">
-          <IoMail style={iconStyles} />
+          <IconMail size={32} strokeWidth={2} />
         </a>
       </div>
     </footer>

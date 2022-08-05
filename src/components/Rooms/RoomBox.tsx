@@ -1,9 +1,9 @@
-import { IoPeople } from "react-icons/io5";
+import { IconUsers } from "@supabase/ui";
 import timeSince from "../../lib/timeSince";
 import ProfilePicture from "./ProfilePicture";
 
 export default function RoomBox({ room }: { room: Room }) {
-  const iconStyles = { width: 24, height: 24 };
+  const iconStyles = { width: 24, height: 24, fill: "white" };
 
   return (
     <div className="max-w-[720px] w-[90%] sm:w-[60%] mx-auto my-10 bg-dark rounded-md p-5">
@@ -23,7 +23,7 @@ export default function RoomBox({ room }: { room: Room }) {
       </div>
       {/* room info */}
       <div className="border-b-2 py-4">
-        <a href={`#room-${room.name}`} className="text-2xl">
+        <a href={`/rooms/${room.id}`} className="text-2xl">
           {room.name}
         </a>
         <p>{room.description}</p>
@@ -31,7 +31,7 @@ export default function RoomBox({ room }: { room: Room }) {
       {/* participants count, topics */}
       <div className="flex items-center justify-between pt-4">
         <p className="flex items-center gap-2">
-          <IoPeople style={iconStyles} /> Y participants
+          <IconUsers style={iconStyles} /> Y participants
         </p>
         {/* <div className="flex gap-2">
           {room.topics &&
