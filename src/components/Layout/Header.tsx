@@ -14,7 +14,7 @@ export default function Header({
   ));
 
   return (
-    <nav className="bg-space-black border-b-2">
+    <nav className="border-b-2">
       <div className="flex items-center justify-between px-8 py-2">
         <Link href="/">
           <Image

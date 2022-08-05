@@ -15,7 +15,7 @@ export default function Footer({
   ));
 
   return (
-    <footer className="bg-space-black border-t-2 font-sans py-4 grid gap-4 grid-cols-1 sm:grid-cols-3 items-center justify-items-center">
+    <footer className="border-t-2 font-sans py-4 grid gap-4 grid-cols-1 sm:grid-cols-3 items-center justify-items-center">
       <Link href="/">
         <div className="flex items-center gap-2 text-xl font-bold cursor-pointer">
           <Image

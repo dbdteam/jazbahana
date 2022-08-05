@@ -7,7 +7,7 @@
 @layer base {
   html,
   body {
-    @apply font-days-one bg-star bg-cover text-white scroll-smooth;
+    @apply font-days-one bg-zinc-900 text-white scroll-smooth;
   }
   h1 {
     @apply text-4xl;
@@ -22,13 +22,6 @@
 }
 
 @layer components {
-  /* Features Component */
-  .feature {
-    @apply flex justify-evenly flex-col sm:flex-row p-8 rounded-md items-center;
-  }
-  .feature > p {
-    @apply mt-4 mx-4 text-2xl;
-  }
   /* Buttons */
   .main {
     @apply text-2xl my-4 sm:text-4xl rounded-xl bg-transparent bg-primary p-4 sm:mt-24;
