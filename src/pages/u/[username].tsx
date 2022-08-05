@@ -49,7 +49,7 @@ export default function Profile({
             </h3>
             {user && (
               <div className="buttons">
-                <Link href="/profile/edit/">
+                <Link href="/edit/profile">
                   <button className="submit">Edit</button>
                 </Link>
                 <button

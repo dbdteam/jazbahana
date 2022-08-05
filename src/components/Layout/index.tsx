@@ -37,7 +37,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     ? [
         {
           label: "Profile",
-          href: `/profile/${profile?.username}`,
+          href: `/u/${profile?.username}`,
         },
         {
           label: "Rooms",

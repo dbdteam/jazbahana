@@ -86,7 +86,7 @@ export default function EditProfile({ profile }: { profile: Profile }) {
                 >
                   Update
                 </button>
-                <Link href={`/profile/${username}`}>
+                <Link href={`/u/${username}`}>
                   <button className="submit">Back</button>
                 </Link>
               </div>
