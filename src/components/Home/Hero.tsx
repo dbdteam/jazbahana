@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import Section from "../Section";
 
 export default function Hero() {
   return (
-    <div className="uppercase flex flex-col md:flex-row items-center justify-center gap-8 py-24">
+    <Section id="hero" className="uppercase md:flex-row gap-8 py-24">
       <div className="p-4">
         <h1>Having problems with school?</h1>
         <h1 className="my-4">Easily trade your notes</h1>
@@ -18,6 +19,6 @@ export default function Hero() {
         height={421}
         alt="JazbaPoint Card"
       />
-    </div>
+    </Section>
   );
 }

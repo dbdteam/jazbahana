@@ -14,7 +14,7 @@ export default function Header({
   ));
 
   return (
-    <nav className="border-b-2">
+    <header className="border-b-2 font-bold">
       <div className="flex items-center justify-between px-8 py-2">
         <Link href="/">
           <Image
@@ -28,6 +28,6 @@ export default function Header({
         <Search />
         <div className="flex text-xl sm:text-2xl gap-4">{items}</div>
       </div>
-    </nav>
+    </header>
   );
 }

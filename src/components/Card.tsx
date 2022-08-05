@@ -2,13 +2,15 @@ import { ReactNode } from "react";
 
 export default function Card({
   children,
+  id = "",
   className,
 }: {
   children: ReactNode;
+  id?: string;
   className?: string;
 }) {
   return (
-    <div className={`flex items-center h-screen ${className}`}>
+    <div id={id} className={`flex items-center min-h-screen ${className}`}>
       <div className="rounded-md bg-dark max-w-[48ch] mx-auto p-10 m-10">
         {children}
       </div>

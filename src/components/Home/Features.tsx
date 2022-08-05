@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { ReactNode } from "react";
+import Section from "../Section";
 
 export default function Features() {
   return (
-    <div className="text-center py-24">
-      <h1 className="text-primary font-bold">Features</h1>
-      <div className="grid grid-cols-1 my-12 max-w-[1080px] mx-auto">
+    <Section id="features">
+      <h1 className="text-primary">Features</h1>
+      <div className="grid grid-cols-1 my-6 max-w-[1080px] mx-auto">
         <Feature>
           <Image
             className="rounded-md"
@@ -52,7 +53,7 @@ export default function Features() {
           </p>
         </Feature>
       </div>
-    </div>
+    </Section>
   );
 }
 

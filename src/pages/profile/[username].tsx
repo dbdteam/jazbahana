@@ -5,11 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Avatar from "../../components/Avatar";
 import Page from "../../components/Layout/Page";
-import { supabase } from "../../lib/supabaseClient";
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const { user } = await getUser(ctx);
-  const { data: profile, error } = await supabase
+  const { data: profile, error } = await supabaseClient
     .from("profiles")
     .select()
     .eq("username", ctx.query.username)
@@ -37,7 +36,7 @@ export default function Profile({
             <h1 className="mb-2 text-xl sm:text-4xl">{profile.username}</h1>
             <h3 className="text-left my-2">Bio</h3>
             <div className="bg-input bg-opacity-[50%] h-[128px] px-1 rounded-md text-left">
-              <p className="pt-2 pl-2">{profile.bio}</p>
+              <p className="pt-2 pl-2 font-bold text-xl">{profile.bio}</p>
             </div>
             <h3 className="flex items-center text-left my-2">
               Balance: {profile.balance}

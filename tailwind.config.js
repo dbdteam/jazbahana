@@ -13,7 +13,7 @@ module.exports = {
         input: "#767676",
       },
       fontFamily: {
-        "days-one": ["Days One", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
   },

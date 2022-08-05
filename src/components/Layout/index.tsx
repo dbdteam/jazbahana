@@ -1,9 +1,9 @@
 import { ReactNode, useEffect, useState } from "react";
 import Head from "next/head";
 import { useUser } from "@supabase/auth-helpers-react";
+import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import Header from "./Header";
 import Footer from "./Footer";
-import { supabase } from "../../lib/supabaseClient";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const { user } = useUser();
@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     async function getProfile() {
       if (!user) return;
       try {
-        const { data, error, status } = await supabase
+        const { data, error, status } = await supabaseClient
           .from<Profile>("profiles")
           .select("username")
           .eq("id", user?.id)

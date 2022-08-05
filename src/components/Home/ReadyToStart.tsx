@@ -9,13 +9,11 @@ export default function ReadyToStart() {
   const url = user ? "/rooms" : "/login";
 
   return (
-    <Card>
-      <div className="max-w-[480px] mx-auto text-center">
-        <h1>Ready to Start Trading?</h1>
-        <button className="main" onClick={() => push(url)}>
-          Join Now &rarr;
-        </button>
-      </div>
+    <Card id="ready" className="max-w-[480px] mx-auto text-center">
+      <h1>Ready to Start Trading?</h1>
+      <button className="main" onClick={() => push(url)}>
+        Join Now &rarr;
+      </button>
     </Card>
   );
 }

@@ -1,10 +1,13 @@
 import { useState } from "react";
 import Link from "next/link";
-import { getUser, withPageAuth } from "@supabase/auth-helpers-nextjs";
+import {
+  getUser,
+  supabaseClient,
+  withPageAuth,
+} from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
 import Avatar from "../../components/Avatar";
 import Page from "../../components/Layout/Page";
-import { supabase } from "../../lib/supabaseClient";
 
 export default function EditProfile({ profile }: { profile: Profile }) {
   const { user } = useUser();
@@ -29,7 +32,7 @@ export default function EditProfile({ profile }: { profile: Profile }) {
         avatar_url,
       };
 
-      let { error } = await supabase.from("profiles").upsert(updates, {
+      const { error } = await supabaseClient.from("profiles").upsert(updates, {
         returning: "minimal", // Don't return the value after inserting
       });
 
@@ -60,7 +63,7 @@ export default function EditProfile({ profile }: { profile: Profile }) {
               <div className="labeled-input">
                 <label htmlFor="username">Username</label>
                 <input
-                  className="text-xl mb-4 p-4"
+                  className="mb-4 p-4"
                   id="username"
                   type="text"
                   value={username || ""}
@@ -77,15 +80,15 @@ export default function EditProfile({ profile }: { profile: Profile }) {
               </div>
 
               <div className="buttons">
-                <Link href={`/profile/${username}`}>
-                  <button className="submit">Back</button>
-                </Link>
                 <button
                   className="submit"
                   onClick={() => updateProfile({ username, bio, avatar_url })}
                 >
                   Update
                 </button>
+                <Link href={`/profile/${username}`}>
+                  <button className="submit">Back</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -103,7 +106,7 @@ export const getServerSideProps = withPageAuth({
       data: profile,
       error,
       status,
-    } = await supabase
+    } = await supabaseClient
       .from<Profile>("profiles")
       .select("username, bio, avatar_url")
       .eq("id", user?.id)

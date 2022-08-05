@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,10 +7,13 @@
 @layer base {
   html,
   body {
-    @apply font-days-one bg-zinc-900 text-white scroll-smooth;
+    @apply font-inter font-semibold bg-zinc-900 text-white scroll-smooth;
   }
   h1 {
-    @apply text-4xl;
+    @apply text-4xl font-extrabold;
+  }
+  h3 {
+    @apply text-xl font-bold;
   }
   input,
   textarea {
@@ -19,22 +22,25 @@
   textarea {
     @apply pt-2 pl-4 h-[128px] text-left resize-none;
   }
+  button {
+    @apply font-bold bg-primary;
+  }
 }
 
 @layer components {
   /* Buttons */
   .main {
-    @apply text-2xl my-4 sm:text-4xl rounded-xl bg-transparent bg-primary p-4 sm:mt-24;
+    @apply text-2xl my-4 sm:text-4xl rounded-xl p-4 sm:mt-12;
   }
   .submit {
-    @apply text-xl sm:text-2xl mx-auto rounded-md bg-primary p-2 w-full;
+    @apply bg-primary font-bold text-xl sm:text-2xl mx-auto rounded-md p-2 w-full;
   }
   .buttons {
     @apply flex mt-4 flex-col mx-auto gap-4;
   }
   /* Form-Related */
   .labeled-input {
-    @apply flex flex-col text-left;
+    @apply flex flex-col text-left text-xl font-bold;
   }
   .labeled-input > input,
   .labeled-input > textarea {

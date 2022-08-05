@@ -1,6 +1,6 @@
-/* eslint @next/next/no-img-element: 0 */
+/* eslint-disable @next/next/no-img-element */
+import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
-import { supabase } from "../lib/supabaseClient";
 
 export default function Avatar({
   url,
@@ -13,7 +13,7 @@ export default function Avatar({
 }) {
   const [uploading, setUploading] = useState(false);
 
-  const { publicURL, error }: any = supabase.storage
+  const { publicURL, error }: any = supabaseClient.storage
     .from("avatars")
     .getPublicUrl(url);
 
@@ -32,7 +32,7 @@ export default function Avatar({
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
 
-      let { error: uploadError } = await supabase.storage
+      let { error: uploadError } = await supabaseClient.storage
         .from("avatars")
         .upload(filePath, file);
 
