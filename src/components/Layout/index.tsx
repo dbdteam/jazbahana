@@ -1,47 +1,39 @@
-import type { Session, User } from "@supabase/supabase-js";
 import { ReactNode, useEffect, useState } from "react";
 import Head from "next/head";
+import { useUser } from "@supabase/auth-helpers-react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { supabase } from "../../lib/supabaseClient";
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<Session | null>(
-    supabase.auth.session()
-  );
-  const [user, setUser] = useState<User | null>(session?.user ?? null);
+  const { user } = useUser();
   const [profile, setProfile] = useState<Profile | null>(null);
 
   useEffect(() => {
+    async function getProfile() {
+      if (!user) return;
+      try {
+        const { data, error, status } = await supabase
+          .from<Profile>("profiles")
+          .select("username")
+          .eq("id", user?.id)
+          .single();
+
+        if (error && status !== 406) throw error;
+
+        if (data) {
+          setProfile(data);
+        }
+      } catch (error: any) {
+        alert(error.message);
+      }
+    }
     getProfile();
 
-    supabase.auth.onAuthStateChange(async (_event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  async function getProfile() {
-    if (!user) return;
-    try {
-      const { data, error, status } = await supabase
-        .from<Profile>("profiles")
-        .select(`username`)
-        .eq("id", user?.id)
-        .single();
-      
-      if (error && status !== 406) throw error
-
-      if (data) {
-        setProfile(data);
-      }
-    } catch (error: any) {
-      alert(error.message);
-    }
-  }
-
-  const links = session
+  const links = user
     ? [
         {
           label: "Profile",

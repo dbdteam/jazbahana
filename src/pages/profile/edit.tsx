@@ -1,58 +1,16 @@
-import { Session, User } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { withPageAuth } from "@supabase/auth-helpers-nextjs";
+import { getUser, withPageAuth } from "@supabase/auth-helpers-nextjs";
+import { useUser } from "@supabase/auth-helpers-react";
 import Avatar from "../../components/Avatar";
 import Page from "../../components/Layout/Page";
 import { supabase } from "../../lib/supabaseClient";
 
-export default function EditProfile() {
-  const [session, setSession] = useState<Session | null>(
-    supabase.auth.session()
-  );
-  const [user, setUser] = useState<User | null>(session?.user ?? null);
-  const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState("");
-  const [bio, setBio] = useState("");
-  const [avatar_url, setAvatarUrl] = useState("");
-
-  useEffect(() => {
-    getProfile();
-
-    supabase.auth.onAuthStateChange(async (_event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session]);
-
-  async function getProfile() {
-    try {
-      setLoading(true);
-
-      let {
-        data: profile,
-        error,
-        status,
-      } = await supabase
-        .from<Profile>("profiles")
-        .select(`username, bio, avatar_url`)
-        .eq("id", user?.id)
-        .single();
-
-      if (error && status !== 406) throw error;
-
-      if (profile) {
-        setUsername(profile.username);
-        setBio(profile.bio);
-        setAvatarUrl(profile.avatar_url);
-      }
-    } catch (error: any) {
-      alert(error.message);
-    } finally {
-      setLoading(false);
-    }
-  }
+export default function EditProfile({ profile }: { profile: Profile }) {
+  const { user } = useUser();
+  const [username, setUsername] = useState(profile.username);
+  const [bio, setBio] = useState(profile.bio);
+  const [avatar_url, setAvatarUrl] = useState(profile.avatar_url);
 
   async function updateProfile({
     username,
@@ -64,8 +22,6 @@ export default function EditProfile() {
     avatar_url: string;
   }) {
     try {
-      setLoading(true);
-
       const updates = {
         id: user?.id,
         username,
@@ -82,8 +38,6 @@ export default function EditProfile() {
       }
     } catch (error: any) {
       alert(error.message);
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -129,9 +83,8 @@ export default function EditProfile() {
                 <button
                   className="submit"
                   onClick={() => updateProfile({ username, bio, avatar_url })}
-                  disabled={loading}
                 >
-                  {loading ? "Loading..." : "Update"}
+                  Update
                 </button>
               </div>
             </div>
@@ -142,4 +95,22 @@ export default function EditProfile() {
   );
 }
 
-export const getServerSideProps = withPageAuth({ redirectTo: "/login" });
+export const getServerSideProps = withPageAuth({
+  redirectTo: "/login",
+  async getServerSideProps(ctx) {
+    const { user } = await getUser(ctx);
+    const {
+      data: profile,
+      error,
+      status,
+    } = await supabase
+      .from<Profile>("profiles")
+      .select("username, bio, avatar_url")
+      .eq("id", user?.id)
+      .single();
+
+    if (error && status !== 406) throw error;
+
+    return { props: { profile } };
+  },
+});
