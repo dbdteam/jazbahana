@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   getUser,
@@ -11,9 +11,22 @@ import Page from "../../components/Layout/Page";
 
 export default function EditProfile({ profile }: { profile: Profile }) {
   const { user } = useUser();
-  const [username, setUsername] = useState(profile.username);
-  const [bio, setBio] = useState(profile.bio);
-  const [avatar_url, setAvatarUrl] = useState(profile.avatar_url);
+  const [username, setUsername] = useState("");
+  const [bio, setBio] = useState("");
+  const [avatar_url, setAvatarUrl] = useState("");
+
+  useEffect(() => {
+    async function setProfile() {
+      if (profile) {
+        setUsername(profile.username);
+        setBio(profile.bio);
+        setAvatarUrl(profile.avatar_url);
+      }
+      return;
+    }
+    setProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   async function updateProfile({
     username,

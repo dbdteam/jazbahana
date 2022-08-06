@@ -3,6 +3,7 @@ import type { User } from "@supabase/supabase-js";
 import type { GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Router from "next/router";
 import Avatar from "../../components/Avatar";
 import Page from "../../components/Layout/Page";
 
@@ -15,7 +16,12 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     .single();
 
   if (!profile || error) {
-    return { notFound: true };
+    return {
+      redirect: {
+        destination: "/edit/profile",
+        permanent: false,
+      },
+    };
   }
   return { props: { user, profile } };
 }
@@ -27,6 +33,11 @@ export default function Profile({
   user: User;
   profile: Profile;
 }) {
+  function handleSignOut() {
+    supabaseClient.auth.signOut();
+    Router.push("/");
+  }
+
   return (
     <Page title="Profile">
       <div className="py-16">
@@ -47,15 +58,12 @@ export default function Profile({
                 alt="Economy Feature"
               />
             </h3>
-            {user && (
+            {user && user.id === profile.id && (
               <div className="buttons">
                 <Link href="/edit/profile">
                   <button className="submit">Edit</button>
                 </Link>
-                <button
-                  className="submit"
-                  onClick={() => supabaseClient.auth.signOut()}
-                >
+                <button className="submit" onClick={handleSignOut}>
                   Sign Out
                 </button>
               </div>
