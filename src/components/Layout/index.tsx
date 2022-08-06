@@ -2,10 +2,12 @@ import { ReactNode, useEffect, useState } from "react";
 import Head from "next/head";
 import { useUser } from "@supabase/auth-helpers-react";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import Header from "./Header";
 import Footer from "./Footer";
 
 export default function Layout({ children }: { children: ReactNode }) {
+  const [parent] = useAutoAnimate<HTMLDivElement>();
   const { user } = useUser();
   const [profile, setProfile] = useState<Profile | null>(null);
 
@@ -79,7 +81,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <title>Jazbahana - Get Notes Faster</title>
       </Head>
       <Header links={links} />
-      {children}
+      <div ref={parent}>{children}</div>
       <Footer links={links} />
     </main>
   );
