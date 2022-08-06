@@ -3,11 +3,11 @@ import { ReactNode } from "react";
 
 export default function Page({
   children,
-  className,
+  className = "",
   title,
 }: {
   children: ReactNode;
-  className: string;
+  className?: string;
   title: string;
 }) {
   const t = `${title} | Jazbahana`;
