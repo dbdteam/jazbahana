@@ -1,10 +1,18 @@
 import { supabaseClient, withPageAuth } from "@supabase/auth-helpers-nextjs";
+import Card from "../../components/Card";
 import Page from "../../components/Layout/Page";
 import RoomBox from "../../components/Rooms/RoomBox";
 
 export default function Rooms({ rooms }: { rooms: Room[] }) {
+  if (!rooms) {
+    return (
+      <Card>
+        <h1 className="text-center text-4xl">No rooms yet...</h1>
+      </Card>
+    );
+  }
   return (
-    <Page title="Rooms">
+    <Page title="Rooms" className="min-h-screen">
       {rooms.map((room) => (
         <RoomBox key={room.name} room={room} />
       ))}

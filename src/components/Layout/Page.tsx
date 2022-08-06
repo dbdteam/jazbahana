@@ -3,14 +3,16 @@ import { ReactNode } from "react";
 
 export default function Page({
   children,
+  className,
   title,
 }: {
   children: ReactNode;
+  className: string;
   title: string;
 }) {
   const t = `${title} | Jazbahana`;
   return (
-    <article>
+    <article className={className}>
       {title && (
         <Head>
           <title>{t}</title>
