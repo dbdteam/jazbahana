@@ -22,18 +22,15 @@
   textarea {
     @apply pt-2 pl-4 h-[128px] text-left resize-none;
   }
-  button {
-    @apply font-bold bg-primary;
-  }
 }
 
 @layer components {
   /* Buttons */
   .main {
-    @apply text-2xl my-4 sm:text-4xl rounded-xl p-4 sm:mt-12;
+    @apply font-bold bg-primary text-2xl my-4 sm:text-4xl rounded-xl p-4 sm:mt-12;
   }
   .submit {
-    @apply bg-primary font-bold text-xl sm:text-2xl mx-auto rounded-md p-2 w-full;
+    @apply font-bold bg-primary text-xl sm:text-2xl mx-auto rounded-md p-2 w-full;
   }
   .buttons {
     @apply flex mt-4 flex-col mx-auto gap-4;
