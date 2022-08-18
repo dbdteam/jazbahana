@@ -6,7 +6,7 @@ interface Room {
   created_at: string;
   name: string;
   description?: string;
-  private: boolean;
+  is_private: boolean;
   // participants: any;
   // topics: string;
 }
