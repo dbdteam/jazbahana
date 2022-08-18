@@ -38,20 +38,14 @@ export default function EditProfile({ profile }: { profile: Profile }) {
     avatar_url: string;
   }) {
     try {
-      const updates = {
-        id: user?.id,
-        username,
-        bio,
-        avatar_url,
-      };
+      const { error, status } = await supabaseClient
+        .from("profiles")
+        .upsert(
+          { id: user?.id, username, bio, avatar_url },
+          { returning: "minimal" }
+        );
 
-      const { error } = await supabaseClient.from("profiles").upsert(updates, {
-        returning: "minimal", // Don't return the value after inserting
-      });
-
-      if (error) {
-        throw error;
-      }
+      if (error && status !== 406) throw error;
     } catch (error: any) {
       alert(error.message);
     }
