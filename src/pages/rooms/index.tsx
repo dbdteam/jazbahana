@@ -1,4 +1,5 @@
 import { supabaseClient, withPageAuth } from "@supabase/auth-helpers-nextjs";
+import Link from "next/link";
 import Card from "../../components/Card";
 import Page from "../../components/Layout/Page";
 import RoomBox from "../../components/Rooms/RoomBox";
@@ -13,6 +14,11 @@ export default function Rooms({ rooms }: { rooms: Room[] }) {
   }
   return (
     <Page title="Rooms" className="min-h-screen">
+      <Link href="/create/room">
+        <a>
+          <button className="submit">Create Room</button>
+        </a>
+      </Link>
       {rooms.map((room) => (
         <RoomBox key={room.name} room={room} />
       ))}
