@@ -19,7 +19,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   if (!profile || error) {
     return {
       redirect: {
-        destination: "/edit/profile",
+        destination: `/u/${user.id}/edit`,
         permanent: false,
       },
     };

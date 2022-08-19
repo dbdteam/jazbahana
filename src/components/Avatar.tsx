@@ -1,5 +1,4 @@
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
-import Image from "next/image";
 import { FormEvent, useState } from "react";
 
 export default function Avatar({
@@ -49,7 +48,7 @@ export default function Avatar({
   return (
     <div>
       <div className="flex justify-center py-4">
-        <Image
+        <img
           src={publicURL || "/images/avatar.svg"}
           alt="Avatar"
           className="rounded-full object-cover"

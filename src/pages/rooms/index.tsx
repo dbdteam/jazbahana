@@ -1,6 +1,5 @@
 import { supabaseClient, withPageAuth } from "@supabase/auth-helpers-nextjs";
 import { IconUsers } from "@supabase/ui";
-import Image from "next/image";
 import Link from "next/link";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
@@ -22,7 +21,7 @@ function Room({ room }: { room: Room }) {
           className="flex items-center gap-2 font-semibold"
         >
           <div className="border-2 border-primary rounded-full h-8">
-            <Image
+            <img
               src={publicURL || "/images/avatar.svg"}
               alt="Profile Picture"
               className="rounded-full object-cover"
