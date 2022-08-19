@@ -20,14 +20,14 @@ export default function Navbar({
   useEffect(() => setMounted(true), []);
 
   return (
-    <nav className="border-b-2 font-bold">
+    <nav className="font-bold">
       <div className="flex items-center justify-between px-8 py-2">
         <Link href="/">
           <Image
             className="cursor-pointer"
             src="/images/logo.png"
-            width={55}
-            height={52}
+            width={42}
+            height={40}
             alt="JazbaHana Logo"
           />
         </Link>

@@ -14,13 +14,13 @@ export default function Footer({
   ));
 
   return (
-    <footer className="border-t-2 py-4 grid gap-4 grid-cols-1 sm:grid-cols-3 items-center justify-items-center">
+    <footer className="py-4 grid gap-4 grid-cols-1 sm:grid-cols-3 items-center justify-items-center">
       <Link href="/">
         <div className="flex items-center gap-2 text-xl font-bold cursor-pointer">
           <Image
             src="/images/logo.png"
-            width={40}
-            height={38}
+            width={42}
+            height={40}
             alt="Jazbahana Logo"
           />
           Jazbahana
