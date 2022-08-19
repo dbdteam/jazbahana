@@ -26,8 +26,8 @@ export default function Layout({ children }: { children: ReactNode }) {
         if (data) {
           setProfile(data);
         }
-      } catch (error: any) {
-        alert(error.message);
+      } catch (error) {
+        console.log("error", error);
       }
     }
     getProfile();

@@ -1,67 +1,66 @@
-/* eslint-disable @next/next/no-img-element */
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
-import { useState } from "react";
+import Image from "next/image";
+import { FormEvent, useState } from "react";
 
 export default function Avatar({
   url,
   size,
-  onUpload = null,
+  onUpload,
 }: {
   url: string;
   size: number;
-  onUpload?: any;
+  onUpload?: (url: string) => void;
 }) {
   const [uploading, setUploading] = useState(false);
 
-  const { publicURL, error }: any = supabaseClient.storage
+  const { publicURL, error } = supabaseClient.storage
     .from("avatars")
     .getPublicUrl(url);
 
   if (error) throw error;
 
-  async function uploadAvatar(event: any) {
+  async function uploadAvatar(event: FormEvent) {
+    const t = event.currentTarget as HTMLInputElement;
     try {
       setUploading(true);
-
-      if (!event.target.files || event.target.files.length === 0) {
+      if (!t.files || t.files.length === 0) {
         throw new Error("You must select an image to upload.");
       }
 
-      const file = event.target.files[0];
+      const file = t.files[0];
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
 
-      let { error: uploadError } = await supabaseClient.storage
+      let { error } = await supabaseClient.storage
         .from("avatars")
         .upload(filePath, file);
 
-      if (uploadError) throw uploadError;
+      if (error) throw error;
 
       if (onUpload) onUpload(filePath);
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      console.log("error", error);
     } finally {
       setUploading(false);
     }
   }
 
-  const avatarPath = url ? publicURL : "/images/avatar.svg";
-
   return (
     <div>
       <div className="flex justify-center py-4">
-        <img
-          src={avatarPath}
+        <Image
+          src={publicURL || "/images/avatar.svg"}
           alt="Avatar"
           className="rounded-full object-cover"
-          style={{ height: size, width: size }}
+          width={size}
+          height={size}
         />
       </div>
-      {onUpload ? (
+      {onUpload && (
         <div style={{ width: size }} className="mx-auto">
           <label
-            className="text-xl sm:text-2xl bg-primary rounded-md p-2 block cursor-pointer"
+            className="font-bold text-xl sm:text-2xl bg-primary rounded-md p-2 block cursor-pointer"
             htmlFor="single"
           >
             {uploading ? "..." : "Upload"}
@@ -75,8 +74,6 @@ export default function Avatar({
             disabled={uploading}
           />
         </div>
-      ) : (
-        <div hidden></div>
       )}
     </div>
   );

@@ -1,9 +1,58 @@
 import { supabaseClient, withPageAuth } from "@supabase/auth-helpers-nextjs";
+import { IconUsers } from "@supabase/ui";
+import Image from "next/image";
 import Link from "next/link";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Page from "../../components/Layout/Page";
-import RoomBox from "../../components/Rooms/RoomBox";
+import timeSince from "../../lib/timeSince";
+
+function Room({ room }: { room: Room }) {
+  const { publicURL, error } = supabaseClient.storage
+    .from("avatars")
+    .getPublicUrl(room.profiles.avatar_url);
+
+  if (error) throw error;
+
+  return (
+    <div className="max-w-[720px] w-[90%] sm:w-[60%] mx-auto my-10 bg-dark rounded-md p-5">
+      <div className="flex items-center justify-between">
+        <a
+          href={`/u/${room.profiles.username}`}
+          className="flex items-center gap-2 font-semibold"
+        >
+          <div className="border-2 border-primary rounded-full h-8">
+            <Image
+              src={publicURL || "/images/avatar.svg"}
+              alt="Profile Picture"
+              className="rounded-full object-cover"
+              width={28}
+              height={28}
+            />
+          </div>
+          <span>@{room.profiles.username}</span>
+        </a>
+        <span>{timeSince(room.created_at)}</span>
+      </div>
+      <div className="border-b-2 py-4">
+        <a href={`/rooms/${room.id}`} className="text-2xl font-extrabold">
+          {room.name}
+        </a>
+        <p>{room.description}</p>
+      </div>
+      <div className="flex items-center justify-between pt-4">
+        <p className="flex items-center gap-2">
+          <IconUsers style={{ width: 24, height: 24, fill: "white" }} />{" "}
+          {room.participants.length} participants
+        </p>
+        {/* <div className="flex gap-2">
+          {room.topics &&
+            room.topics.map((topic) => <span className="text-xs border-2 p-1 rounded-md" key={topic}>{topic}</span>)}
+        </div> */}
+      </div>
+    </div>
+  );
+}
 
 export default function Rooms({ rooms }: { rooms: Room[] }) {
   if (!rooms) {
@@ -23,7 +72,7 @@ export default function Rooms({ rooms }: { rooms: Room[] }) {
         </a>
       </Link>
       {rooms.map((room) => (
-        <RoomBox key={room.name} room={room} />
+        <Room key={room.name} room={room} />
       ))}
     </Page>
   );
@@ -38,7 +87,7 @@ export const getServerSideProps = withPageAuth({
       status,
     } = await supabaseClient
       .from<Room>("rooms")
-      .select("*, profiles!inner(username, avatar_url)")
+      .select("*, profiles!inner(username, avatar_url), participants(*)")
       .order("created_at", { ascending: false });
 
     if (error && status !== 406) throw error;

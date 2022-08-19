@@ -47,57 +47,55 @@ export default function EditProfile({ profile }: { profile: Profile }) {
         );
 
       if (error && status !== 406) throw error;
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      console.log("error", error);
     }
   }
 
   return (
-    <Page title="Edit Profile">
-      <div className="py-16">
-        <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl">
-          <div className="w-[90%] mx-auto">
-            <Avatar
-              url={avatar_url}
-              size={120}
-              onUpload={(url: string) => {
-                setAvatarUrl(url);
-                updateProfile({ username, bio, avatar_url: url });
-              }}
-            />
-            <p className="my-2">{user?.email}</p>
+    <Page title="Edit Profile" className="min-h-screen flex items-center">
+      <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl">
+        <div className="w-[90%] mx-auto">
+          <Avatar
+            url={avatar_url}
+            size={120}
+            onUpload={(url: string) => {
+              setAvatarUrl(url);
+              updateProfile({ username, bio, avatar_url: url });
+            }}
+          />
+          <h1 className="text-2xl font-bold my-2">{user?.email}</h1>
 
-            <div className="my-4">
-              <div className="flex flex-col text-xl text-left font-bold my-4">
-                <label htmlFor="username">Username</label>
-                <input
-                  className="p-4"
-                  id="username"
-                  type="text"
-                  value={username || ""}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <div className="flex flex-col text-left text-xl font-bold my-4">
-                <label htmlFor="bio">Bio</label>
-                <textarea
-                  id="bio"
-                  value={bio || ""}
-                  onChange={(e) => setBio(e.target.value)}
-                />
-              </div>
+          <div className="my-4">
+            <div className="flex flex-col text-xl text-left font-bold my-4">
+              <label htmlFor="username">Username</label>
+              <input
+                className="p-4"
+                id="username"
+                type="text"
+                value={username || ""}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col text-left text-xl font-bold my-4">
+              <label htmlFor="bio">Bio</label>
+              <textarea
+                id="bio"
+                value={bio || ""}
+                onChange={(e) => setBio(e.target.value)}
+              />
+            </div>
 
-              <div className="flex flex-col gap-4">
-                <Button
-                  className="text-xl sm:text-2xl p-2"
-                  onClick={() => updateProfile({ username, bio, avatar_url })}
-                >
-                  Update
-                </Button>
-                <Link href={`/u/${username}`}>
-                  <Button className="text-xl sm:text-2xl p-2">Back</Button>
-                </Link>
-              </div>
+            <div className="flex flex-col gap-4">
+              <Button
+                className="text-xl sm:text-2xl p-2"
+                onClick={() => updateProfile({ username, bio, avatar_url })}
+              >
+                Update
+              </Button>
+              <Link href={`/u/${username}`}>
+                <Button className="text-xl sm:text-2xl p-2">Back</Button>
+              </Link>
             </div>
           </div>
         </div>
