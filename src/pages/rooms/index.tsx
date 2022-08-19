@@ -22,15 +22,11 @@ function Room({ room }: { room: Room }) {
           href={`/u/${room.profiles.username}`}
           className="flex items-center gap-2 font-semibold"
         >
-          <div className="border-2 border-blue-500 rounded-full h-8">
-            <img
-              src={publicURL || "/images/avatar.svg"}
-              alt="Profile Picture"
-              className="rounded-full object-cover"
-              width={28}
-              height={28}
-            />
-          </div>
+          <img
+            src={publicURL || "/images/avatar.svg"}
+            alt="Profile Picture"
+            className="border-2 border-blue-500 rounded-full object-cover w-[28px] h-[28px]"
+          />
           <span>@{room.profiles.username}</span>
         </a>
         <span>{timeSince(room.created_at)}</span>
