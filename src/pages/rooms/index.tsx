@@ -15,7 +15,7 @@ export default function Rooms({ rooms }: { rooms: Room[] }) {
   }
   return (
     <Page title="Rooms" className="min-h-screen">
-      <Link href="/create/room">
+      <Link href="/rooms/create">
         <a>
           <Button className="text-xl sm:text-2xl p-2 w-full">
             Create Room
