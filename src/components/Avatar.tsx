@@ -59,7 +59,7 @@ export default function Avatar({
       {onUpload && (
         <div style={{ width: size }} className="mx-auto">
           <label
-            className="font-bold text-xl sm:text-2xl bg-primary rounded-md p-2 block cursor-pointer"
+            className="text-gray-100 font-bold text-xl sm:text-2xl bg-blue-500 rounded-md p-2 block cursor-pointer"
             htmlFor="single"
           >
             {uploading ? "..." : "Upload"}

@@ -41,14 +41,14 @@ export default function Profile({
 
   return (
     <Page title="Profile" className="min-h-screen flex items-center">
-      <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl z-1">
+      <div className="w-[90%] md:w-[50%] mx-auto bg-gray-100 dark:bg-gray-800 text-center py-8 rounded-xl z-1">
         <div className="w-[90%] mx-auto">
           <Avatar url={profile.avatar_url} size={120} />
           <h1 className="mb-2 text-2xl sm:text-4xl font-extrabold">
             {profile.username}
           </h1>
           <h3 className="text-xl font-bold text-left my-2">Bio</h3>
-          <div className="bg-slate-500 bg-opacity-[50%] h-[128px] px-1 rounded-md text-left">
+          <div className="bg-gray-400 bg-opacity-[50%] h-[128px] px-1 rounded-md text-left">
             <p className="pt-2 pl-2 font-bold text-xl">{profile.bio}</p>
           </div>
           <h3 className="text-xl font-bold flex items-center text-left my-4">

@@ -7,11 +7,11 @@
 @layer base {
   html,
   body {
-    @apply bg-zinc-900 text-white scroll-smooth;
+    @apply scroll-smooth;
   }
   input,
   textarea {
-    @apply bg-slate-500 bg-opacity-[50%] rounded-md;
+    @apply bg-gray-400 bg-opacity-[50%] rounded-md;
   }
   textarea {
     @apply pt-2 pl-4 h-[128px] text-left resize-none;

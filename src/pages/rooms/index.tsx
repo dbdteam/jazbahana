@@ -1,5 +1,6 @@
 import { supabaseClient, withPageAuth } from "@supabase/auth-helpers-nextjs";
 import { IconUsers } from "@supabase/ui";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
@@ -7,6 +8,7 @@ import Page from "../../components/Layout/Page";
 import timeSince from "../../lib/timeSince";
 
 function Room({ room }: { room: Room }) {
+  const { theme } = useTheme();
   const { publicURL, error } = supabaseClient.storage
     .from("avatars")
     .getPublicUrl(room.profiles.avatar_url);
@@ -14,13 +16,13 @@ function Room({ room }: { room: Room }) {
   if (error) throw error;
 
   return (
-    <div className="max-w-[720px] w-[90%] sm:w-[60%] mx-auto my-10 bg-dark rounded-md p-5">
+    <div className="max-w-[720px] w-[90%] sm:w-[60%] mx-auto my-10 bg-gray-100 dark:bg-gray-800 rounded-md p-5">
       <div className="flex items-center justify-between">
         <a
           href={`/u/${room.profiles.username}`}
           className="flex items-center gap-2 font-semibold"
         >
-          <div className="border-2 border-primary rounded-full h-8">
+          <div className="border-2 border-blue-500 rounded-full h-8">
             <img
               src={publicURL || "/images/avatar.svg"}
               alt="Profile Picture"
@@ -41,7 +43,13 @@ function Room({ room }: { room: Room }) {
       </div>
       <div className="flex items-center justify-between pt-4">
         <p className="flex items-center gap-2">
-          <IconUsers style={{ width: 24, height: 24, fill: "white" }} />{" "}
+          <IconUsers
+            style={{
+              width: 24,
+              height: 24,
+              fill: theme === "light" ? "black" : "white",
+            }}
+          />{" "}
           {room.participants.length} participants
         </p>
         {/* <div className="flex gap-2">

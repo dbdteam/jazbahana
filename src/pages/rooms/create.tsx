@@ -33,7 +33,7 @@ export default function CreateRoom() {
 
   return (
     <Page title="Create Room" className="min-h-screen flex items-center">
-      <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl">
+      <div className="w-[90%] md:w-[50%] mx-auto bg-gray-100 dark:bg-gray-800 text-center py-8 rounded-xl">
         <h1 className="text-4xl font-extrabold">Create Room</h1>
         <form className="w-[90%] mx-auto my-4" onSubmit={handleSubmit}>
           <div className="flex flex-col text-xl font-bold text-left my-4">

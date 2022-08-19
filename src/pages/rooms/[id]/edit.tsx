@@ -54,7 +54,7 @@ export default function EditRoom() {
 
   return (
     <Page title="Edit Profile" className="min-h-screen flex items-center">
-      <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl">
+      <div className="w-[90%] md:w-[50%] mx-auto bg-gray-100 dark:bg-gray-800 text-center py-8 rounded-xl">
         <div className="w-[90%] mx-auto">
           <h1 className="text-4xl font-extrabold">Edit Room</h1>
           <div className="my-4">

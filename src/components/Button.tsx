@@ -10,7 +10,7 @@ export default function Button({
   return (
     <button
       onClick={onClick}
-      className={`bg-primary font-bold rounded-md ${className}`}
+      className={`bg-blue-500 text-gray-100 font-bold rounded-md ${className}`}
     >
       {children}
     </button>

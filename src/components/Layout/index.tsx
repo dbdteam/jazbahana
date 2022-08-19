@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useUser } from "@supabase/auth-helpers-react";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import Header from "./Header";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -80,7 +80,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         />
         <title>Jazbahana - Get Notes Faster</title>
       </Head>
-      <Header links={links} />
+      <Navbar links={links} />
       <div ref={parent}>{children}</div>
       <Footer links={links} />
     </main>
