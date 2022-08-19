@@ -10,9 +10,11 @@ import Avatar from "../../../components/Avatar";
 import Page from "../../../components/Layout/Page";
 import Button from "../../../components/Button";
 import Card from "../../../components/Card";
+import { useRouter } from "next/router";
 
 export default function EditProfile({ profile }: { profile: Profile }) {
   const { user } = useUser();
+  const { push } = useRouter();
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [avatar_url, setAvatarUrl] = useState("");
@@ -90,7 +92,10 @@ export default function EditProfile({ profile }: { profile: Profile }) {
           <div className="flex flex-col gap-4">
             <Button
               className="text-xl sm:text-2xl p-2"
-              onClick={() => updateProfile({ username, bio, avatar_url })}
+              onClick={() => {
+                updateProfile({ username, bio, avatar_url });
+                push(`/u/${username}`);
+              }}
             >
               Update
             </Button>
