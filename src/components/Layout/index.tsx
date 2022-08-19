@@ -61,7 +61,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           name="description"
           content="Jazbahana is a note-trader app created to help students all around the world."
         />
-        <meta name="author" content="DBD Team" />
+        <meta name="author" content="Jolshylar" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <meta name="twitter:title" content="Jazbahana - Get Notes Faster" />
         <meta name="twitter:card" content="summary_large_image" />

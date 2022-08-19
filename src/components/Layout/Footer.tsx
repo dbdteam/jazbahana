@@ -28,7 +28,11 @@ export default function Footer({
       </Link>
       <div className="flex gap-4 text-lg">{items}</div>
       <div className="flex gap-4">
-        <a target="_blank" rel="noreferrer" href="https://github.com/dbdteam">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://github.com/jolshylar/"
+        >
           <IconGitHub size={32} strokeWidth={2} />
         </a>
         <a target="_blank" rel="noreferrer" href="mailto:ozgdastan@gmail.com">
