@@ -14,7 +14,7 @@ export default function Home() {
       <Features />
       <ReadyToStart />
       <Link href="#ready">
-        <div className="fixed bottom-0 right-0 cursor-pointer px-4 py-2 rounded-full hover:bg-black hover:duration-300">
+        <div className="fixed bottom-0 right-0 cursor-pointer px-4 py-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 hover:duration-300">
           <IconChevronDown width={24} height={24} />
         </div>
       </Link>
