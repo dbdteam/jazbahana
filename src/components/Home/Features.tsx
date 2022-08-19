@@ -16,7 +16,7 @@ export default function Features() {
             height={250}
             alt="Notes Feature"
           />
-          <p className="text-center sm:text-left mt-4 mx-4 text-2xl">
+          <p className="mt-4 mx-4 text-2xl">
             It solves the task by opening either a{" "}
             <H>public or private chat-like room.</H>
             <br />
@@ -26,7 +26,7 @@ export default function Features() {
         </Feature>
 
         <Feature>
-          <p className="text-center sm:text-left hidden sm:block mt-4 mx-4 text-2xl">
+          <p className="hidden sm:block mt-4 mx-4 text-2xl">
             Notes are uploaded via <H>file-select form</H>. They can be images,
             PDFs and Word documents.
           </p>
@@ -37,7 +37,7 @@ export default function Features() {
             height={250}
             alt="Upload Notes Feature"
           />
-          <p className="text-center sm:text-left sm:hidden mt-4 mx-4 text-2xl">
+          <p className="sm:hidden mt-4 mx-4 text-2xl">
             Notes are uploaded via <H>file-select form</H>. They can be images,
             PDFs and Word documents.
           </p>
@@ -51,7 +51,7 @@ export default function Features() {
             height={250}
             alt="Economy Feature"
           />
-          <p className="text-center sm:text-left mt-4 mx-4 text-2xl">
+          <p className="mt-4 mx-4 text-2xl">
             <H>Economy</H>. Jazbahana offers its own currency called JazbaPoint.
           </p>
         </Feature>

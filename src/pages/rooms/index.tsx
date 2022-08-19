@@ -16,7 +16,7 @@ function Room({ room }: { room: Room }) {
   if (error) throw error;
 
   return (
-    <Card className="max-w-[720px]">
+    <Card>
       <div className="flex items-center justify-between">
         <a
           href={`/u/${room.profiles.username}`}
@@ -69,9 +69,7 @@ export default function Rooms({ rooms }: { rooms: Room[] }) {
     <Page title="Rooms" className="min-h-screen">
       <Link href="/rooms/create">
         <a>
-          <Button className="text-xl sm:text-2xl p-2 w-full">
-            Create Room
-          </Button>
+          <Button className="text-xl sm:text-2xl p-2 w-[90%] mx-auto max-w-[720px]">Create Room</Button>
         </a>
       </Link>
       {rooms.map((room) => (
