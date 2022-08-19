@@ -61,7 +61,7 @@ export default function EditRoom() {
             <div className="flex flex-col text-xl font-bold text-left my-4">
               <label htmlFor="name">Room Name</label>
               <input
-                className="p-4"
+                className="bg-gray-400/50 rounded-md p-4"
                 id="name"
                 type="text"
                 value={name || ""}
@@ -72,6 +72,7 @@ export default function EditRoom() {
               <label htmlFor="description">Description</label>
               <textarea
                 id="description"
+                className="bg-gray-400/50 rounded-md h-32 resize-none py-2 px-4"
                 value={description || ""}
                 onChange={(e) => setDescription(e.target.value)}
               />

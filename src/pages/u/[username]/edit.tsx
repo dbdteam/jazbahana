@@ -70,7 +70,7 @@ export default function EditProfile({ profile }: { profile: Profile }) {
             <div className="flex flex-col text-xl text-left font-bold my-4">
               <label htmlFor="username">Username</label>
               <input
-                className="p-4"
+                className="bg-gray-400/50 rounded-md p-4"
                 id="username"
                 type="text"
                 value={username || ""}
@@ -81,6 +81,7 @@ export default function EditProfile({ profile }: { profile: Profile }) {
               <label htmlFor="bio">Bio</label>
               <textarea
                 id="bio"
+                className="bg-gray-400/50 rounded-md h-32 resize-none py-2 px-4"
                 value={bio || ""}
                 onChange={(e) => setBio(e.target.value)}
               />

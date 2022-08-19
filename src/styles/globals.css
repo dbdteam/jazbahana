@@ -5,15 +5,7 @@
 @tailwind utilities;
 
 @layer base {
-  html,
-  body {
+  html {
     @apply scroll-smooth;
-  }
-  input,
-  textarea {
-    @apply bg-gray-400 bg-opacity-[50%] rounded-md;
-  }
-  textarea {
-    @apply pt-2 pl-4 h-[128px] text-left resize-none;
   }
 }
