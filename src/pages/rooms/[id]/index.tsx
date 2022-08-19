@@ -60,7 +60,9 @@ export default function Room({ room }: { room: Room }) {
             </button>
           </div>
         </div>
-        <h1 className="text-center text-[3rem] my-8">{room.name}</h1>
+        <h1 className="text-center text-4xl font-extrabold my-8">
+          {room.name}
+        </h1>
         <p>{room.description}</p>
       </Card>
     </Page>

@@ -23,7 +23,7 @@ export default function SignIn() {
   }
   return (
     <Card className="flex justify-center flex-col items-center text-center">
-      <h1>You are already signed in.</h1>
+      <h1 className="text-4xl font-extrabold">You are already signed in.</h1>
       <Button
         className="text-2xl sm:text-4xl my-4 p-4"
         onClick={() => supabaseClient.auth.signOut()}

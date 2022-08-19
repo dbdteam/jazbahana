@@ -9,7 +9,7 @@ export default function Rooms({ rooms }: { rooms: Room[] }) {
   if (!rooms) {
     return (
       <Card>
-        <h1 className="text-center text-4xl">No rooms yet...</h1>
+        <h1 className="text-center text-4xl font-extrabold">No rooms yet...</h1>
       </Card>
     );
   }

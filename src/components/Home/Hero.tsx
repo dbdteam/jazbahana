@@ -7,12 +7,20 @@ export default function Hero() {
   return (
     <Section id="hero" className="uppercase md:flex-row gap-8 py-24">
       <div className="p-4">
-        <h1>Having problems with school?</h1>
-        <h1 className="my-4">Easily trade your notes</h1>
-        <h1 className="text-secondary">with Jazbahana</h1>
+        <h1 className="text-4xl font-extrabold">
+          Having problems with school?
+        </h1>
+        <h1 className="text-4xl font-extrabold my-4">
+          Easily trade your notes
+        </h1>
+        <h1 className="text-4xl font-extrabold text-secondary">
+          with Jazbahana
+        </h1>
         <Link href="#what-is-jazbahana">
           <a>
-            <Button className="text-2xl sm:text-4xl my-4 p-4">GET STARTED &rarr;</Button>
+            <Button className="text-2xl sm:text-4xl my-4 p-4">
+              GET STARTED &rarr;
+            </Button>
           </a>
         </Link>
       </div>

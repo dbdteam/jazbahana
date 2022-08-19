@@ -5,7 +5,7 @@ import Section from "../Section";
 export default function Features() {
   return (
     <Section id="features">
-      <h1 className="text-primary">Features</h1>
+      <h1 className="text-primary text-4xl font-extrabold">Features</h1>
       <div className="grid grid-cols-1 my-6 max-w-[1080px] mx-auto">
         <Feature>
           <Image

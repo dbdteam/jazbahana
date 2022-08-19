@@ -10,10 +10,9 @@ module.exports = {
         primary: "#0295DB",
         secondary: "#F7CB0E",
         dark: "#212121",
-        input: "#767676",
       },
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
       },
     },
   },

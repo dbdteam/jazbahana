@@ -4,7 +4,9 @@ import Section from "../Section";
 export default function WhatIsJazbahana() {
   return (
     <Section id="what-is-jazbahana" className="text-center">
-      <h1 className="text-primary">What is Jazbahana?</h1>
+      <h1 className="text-primary text-4xl font-extrabold">
+        What is Jazbahana?
+      </h1>
       <div className="text-xl sm:text-3xl max-w-[720px] mx-auto">
         <p className="mt-12 pb-6">
           Jazbahana is a platform specialized for students all around the world

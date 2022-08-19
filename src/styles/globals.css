@@ -7,14 +7,11 @@
 @layer base {
   html,
   body {
-    @apply font-inter font-semibold bg-zinc-900 text-white scroll-smooth;
-  }
-  h1 {
-    @apply text-4xl font-extrabold;
+    @apply bg-zinc-900 text-white scroll-smooth;
   }
   input,
   textarea {
-    @apply bg-input bg-opacity-[50%] rounded-md;
+    @apply bg-slate-500 bg-opacity-[50%] rounded-md;
   }
   textarea {
     @apply pt-2 pl-4 h-[128px] text-left resize-none;
