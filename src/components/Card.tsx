@@ -10,8 +10,10 @@ export default function Card({
   className?: string;
 }) {
   return (
-    <div id={id} className={`flex items-center min-h-screen ${className}`}>
-      <div className="rounded-md bg-gray-100 dark:bg-gray-800 max-w-[480px] mx-auto p-10 m-10">
+    <div id={id} className="w-[90%] sm:w-[60%] mx-auto">
+      <div
+        className={`rounded-md bg-gray-100 dark:bg-gray-800 mx-auto p-5 m-5 ${className}`}
+      >
         {children}
       </div>
     </div>

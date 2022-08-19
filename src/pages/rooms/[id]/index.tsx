@@ -4,8 +4,8 @@ import Page from "../../../components/Layout/Page";
 import Card from "../../../components/Card";
 import { IconChevronLeft, IconEdit, IconTrash } from "@supabase/ui";
 import Link from "next/link";
-// import timeSince from "../../../lib/timeSince";
 import { useRouter } from "next/router";
+import { useUser } from "@supabase/auth-helpers-react";
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   if (!query.id || typeof query.id !== "string") {
@@ -25,6 +25,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 }
 
 export default function Room({ room }: { room: Room }) {
+  const { user } = useUser();
   const { push } = useRouter();
   const deleteRoom = async () => {
     try {
@@ -40,7 +41,7 @@ export default function Room({ room }: { room: Room }) {
   };
 
   return (
-    <Page title={room.name}>
+    <Page title={room.name} className="min-h-screen flex items-center">
       <Card>
         <div className="flex items-center justify-between">
           <Link href="/rooms">
@@ -48,22 +49,25 @@ export default function Room({ room }: { room: Room }) {
               <IconChevronLeft /> Back
             </a>
           </Link>
+          {/* Consider using Day.js */}
           {/* <div>created {timeSince(room.created_at)}</div> */}
-          <div className="flex gap-2">
-            <Link href={`/rooms/${room.id}/edit`}>
-              <a>
-                <IconEdit />
-              </a>
-            </Link>
-            <button onClick={deleteRoom}>
-              <IconTrash />
-            </button>
-          </div>
+          {user?.id === room.host_id && (
+            <div className="flex gap-2">
+              <Link href={`/rooms/${room.id}/edit`}>
+                <a>
+                  <IconEdit />
+                </a>
+              </Link>
+              <button onClick={deleteRoom}>
+                <IconTrash />
+              </button>
+            </div>
+          )}
         </div>
-        <h1 className="text-center text-4xl font-extrabold my-8">
-          {room.name}
-        </h1>
-        <p>{room.description}</p>
+        <div className="text-center">
+          <h1 className="text-4xl font-extrabold my-4">{room.name}</h1>
+          <p className="text-2xl">{room.description}</p>
+        </div>
       </Card>
     </Page>
   );

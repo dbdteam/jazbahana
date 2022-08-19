@@ -3,6 +3,7 @@ import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Button from "../../../components/Button";
+import Card from "../../../components/Card";
 import Page from "../../../components/Layout/Page";
 
 export default function EditRoom() {
@@ -54,54 +55,52 @@ export default function EditRoom() {
 
   return (
     <Page title="Edit Profile" className="min-h-screen flex items-center">
-      <div className="w-[90%] md:w-[50%] mx-auto bg-gray-100 dark:bg-gray-800 text-center py-8 rounded-xl">
-        <div className="w-[90%] mx-auto">
-          <h1 className="text-4xl font-extrabold">Edit Room</h1>
-          <div className="my-4">
-            <div className="flex flex-col text-xl font-bold text-left my-4">
-              <label htmlFor="name">Room Name</label>
-              <input
-                className="bg-gray-400/50 rounded-md p-4"
-                id="name"
-                type="text"
-                value={name || ""}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div className="flex flex-col text-xl font-bold text-left my-4">
-              <label htmlFor="description">Description</label>
-              <textarea
-                id="description"
-                className="bg-gray-400/50 rounded-md h-32 resize-none py-2 px-4"
-                value={description || ""}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
-            <div className="flex flex-col text-xl font-bold text-left my-4">
-              <label htmlFor="is_private">Is Private</label>
-              <input
-                type="checkbox"
-                id="is_private"
-                name="is_private"
-                checked={is_private}
-                onChange={() => setIsPrivate(!is_private)}
-              />
-            </div>
+      <Card>
+        <h1 className="text-center text-4xl font-extrabold">Edit Room</h1>
+        <div className="my-4">
+          <div className="flex flex-col text-xl font-bold text-left my-4">
+            <label htmlFor="name">Room Name</label>
+            <input
+              className="bg-gray-400/50 rounded-md p-4"
+              id="name"
+              type="text"
+              value={name || ""}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col text-xl font-bold text-left my-4">
+            <label htmlFor="description">Description</label>
+            <textarea
+              id="description"
+              className="bg-gray-400/50 rounded-md h-32 resize-none py-2 px-4"
+              value={description || ""}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col text-xl font-bold text-left my-4">
+            <label htmlFor="is_private">Is Private</label>
+            <input
+              type="checkbox"
+              id="is_private"
+              name="is_private"
+              checked={is_private}
+              onChange={() => setIsPrivate(!is_private)}
+            />
+          </div>
 
-            <div className="flex flex-col gap-4">
-              <Button
-                className="text-xl sm:text-2xl p-2 w-full"
-                onClick={() => updateRoom({ name, description, is_private })}
-              >
-                Update
-              </Button>
-              <Link href={`/rooms`}>
-                <Button className="text-xl sm:text-2xl p-2 w-full">Back</Button>
-              </Link>
-            </div>
+          <div className="flex flex-col gap-4">
+            <Button
+              className="text-xl sm:text-2xl p-2 w-full"
+              onClick={() => updateRoom({ name, description, is_private })}
+            >
+              Update
+            </Button>
+            <Link href={`/rooms`}>
+              <Button className="text-xl sm:text-2xl p-2 w-full">Back</Button>
+            </Link>
           </div>
         </div>
-      </div>
+      </Card>
     </Page>
   );
 }

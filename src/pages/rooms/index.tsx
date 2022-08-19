@@ -16,7 +16,7 @@ function Room({ room }: { room: Room }) {
   if (error) throw error;
 
   return (
-    <div className="max-w-[720px] w-[90%] sm:w-[60%] mx-auto my-10 bg-gray-100 dark:bg-gray-800 rounded-md p-5">
+    <Card className="max-w-[720px]">
       <div className="flex items-center justify-between">
         <a
           href={`/u/${room.profiles.username}`}
@@ -57,7 +57,7 @@ function Room({ room }: { room: Room }) {
             room.topics.map((topic) => <span className="text-xs border-2 p-1 rounded-md" key={topic}>{topic}</span>)}
         </div> */}
       </div>
-    </div>
+    </Card>
   );
 }
 

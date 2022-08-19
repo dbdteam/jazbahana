@@ -9,6 +9,7 @@ import { useUser } from "@supabase/auth-helpers-react";
 import Avatar from "../../../components/Avatar";
 import Page from "../../../components/Layout/Page";
 import Button from "../../../components/Button";
+import Card from "../../../components/Card";
 
 export default function EditProfile({ profile }: { profile: Profile }) {
   const { user } = useUser();
@@ -54,53 +55,51 @@ export default function EditProfile({ profile }: { profile: Profile }) {
 
   return (
     <Page title="Edit Profile" className="min-h-screen flex items-center">
-      <div className="w-[90%] md:w-[50%] mx-auto bg-gray-100 dark:bg-gray-800 text-center py-8 rounded-xl">
-        <div className="w-[90%] mx-auto">
-          <Avatar
-            url={avatar_url}
-            size={120}
-            onUpload={(url: string) => {
-              setAvatarUrl(url);
-              updateProfile({ username, bio, avatar_url: url });
-            }}
-          />
-          <h1 className="text-2xl font-bold my-2">{user?.email}</h1>
+      <Card>
+        <Avatar
+          url={avatar_url}
+          size={120}
+          onUpload={(url: string) => {
+            setAvatarUrl(url);
+            updateProfile({ username, bio, avatar_url: url });
+          }}
+        />
+        <h1 className="text-center text-2xl font-bold my-2">{user?.email}</h1>
 
-          <div className="my-4">
-            <div className="flex flex-col text-xl text-left font-bold my-4">
-              <label htmlFor="username">Username</label>
-              <input
-                className="bg-gray-400/50 rounded-md p-4"
-                id="username"
-                type="text"
-                value={username || ""}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
-            <div className="flex flex-col text-left text-xl font-bold my-4">
-              <label htmlFor="bio">Bio</label>
-              <textarea
-                id="bio"
-                className="bg-gray-400/50 rounded-md h-32 resize-none py-2 px-4"
-                value={bio || ""}
-                onChange={(e) => setBio(e.target.value)}
-              />
-            </div>
+        <div className="my-4">
+          <div className="flex flex-col text-xl text-left font-bold my-4">
+            <label htmlFor="username">Username</label>
+            <input
+              className="bg-gray-400/50 rounded-md p-4"
+              id="username"
+              type="text"
+              value={username || ""}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col text-left text-xl font-bold my-4">
+            <label htmlFor="bio">Bio</label>
+            <textarea
+              id="bio"
+              className="bg-gray-400/50 rounded-md h-32 resize-none py-2 px-4"
+              value={bio || ""}
+              onChange={(e) => setBio(e.target.value)}
+            />
+          </div>
 
-            <div className="flex flex-col gap-4">
-              <Button
-                className="text-xl sm:text-2xl p-2"
-                onClick={() => updateProfile({ username, bio, avatar_url })}
-              >
-                Update
-              </Button>
-              <Link href={`/u/${username}`}>
-                <Button className="text-xl sm:text-2xl p-2">Back</Button>
-              </Link>
-            </div>
+          <div className="flex flex-col gap-4">
+            <Button
+              className="text-xl sm:text-2xl p-2"
+              onClick={() => updateProfile({ username, bio, avatar_url })}
+            >
+              Update
+            </Button>
+            <Link href={`/u/${username}`}>
+              <Button className="text-xl sm:text-2xl p-2">Back</Button>
+            </Link>
           </div>
         </div>
-      </div>
+      </Card>
     </Page>
   );
 }
