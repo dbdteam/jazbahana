@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Button from "../Button";
 import Section from "../Section";
 
 export default function Hero() {
@@ -10,7 +11,9 @@ export default function Hero() {
         <h1 className="my-4">Easily trade your notes</h1>
         <h1 className="text-secondary">with Jazbahana</h1>
         <Link href="#what-is-jazbahana">
-          <button className="main">GET STARTED &rarr;</button>
+          <a>
+            <Button className="text-2xl sm:text-4xl my-4 p-4">GET STARTED &rarr;</Button>
+          </a>
         </Link>
       </div>
       <Image

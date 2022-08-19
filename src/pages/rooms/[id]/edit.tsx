@@ -2,6 +2,7 @@ import { supabaseClient, withPageAuth } from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Button from "../../../components/Button";
 import Page from "../../../components/Layout/Page";
 
 export default function EditRoom() {
@@ -57,17 +58,17 @@ export default function EditRoom() {
         <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl">
           <div className="w-[90%] mx-auto">
             <div className="my-4">
-              <div className="labeled-input">
+              <div className="flex flex-col text-xl font-bold text-left my-4">
                 <label htmlFor="name">Room Name</label>
                 <input
-                  className="mb-4 p-4"
+                  className="p-4"
                   id="name"
                   type="text"
                   value={name || ""}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div className="labeled-input">
+              <div className="flex flex-col text-xl font-bold text-left my-4">
                 <label htmlFor="description">Description</label>
                 <textarea
                   id="description"
@@ -75,7 +76,7 @@ export default function EditRoom() {
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
-              <div className="labeled-input">
+              <div className="flex flex-col text-xl font-bold text-left my-4">
                 <label htmlFor="is_private">Is Private</label>
                 <input
                   type="checkbox"
@@ -86,15 +87,17 @@ export default function EditRoom() {
                 />
               </div>
 
-              <div className="buttons">
-                <button
-                  className="submit"
+              <div className="flex flex-col gap-4">
+                <Button
+                  className="text-xl sm:text-2xl p-2 w-full"
                   onClick={() => updateRoom({ name, description, is_private })}
                 >
                   Update
-                </button>
+                </Button>
                 <Link href={`/rooms`}>
-                  <button className="submit">Back</button>
+                  <Button className="text-xl sm:text-2xl p-2 w-full">
+                    Back
+                  </Button>
                 </Link>
               </div>
             </div>

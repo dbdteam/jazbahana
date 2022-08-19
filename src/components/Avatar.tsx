@@ -60,7 +60,10 @@ export default function Avatar({
       </div>
       {onUpload ? (
         <div style={{ width: size }} className="mx-auto">
-          <label className="submit block cursor-pointer" htmlFor="single">
+          <label
+            className="text-xl sm:text-2xl bg-primary rounded-md p-2 block cursor-pointer"
+            htmlFor="single"
+          >
             {uploading ? "..." : "Upload"}
           </label>
           <input

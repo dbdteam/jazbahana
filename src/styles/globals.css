@@ -12,35 +12,11 @@
   h1 {
     @apply text-4xl font-extrabold;
   }
-  h3 {
-    @apply text-xl font-bold;
-  }
   input,
   textarea {
     @apply bg-input bg-opacity-[50%] rounded-md;
   }
   textarea {
     @apply pt-2 pl-4 h-[128px] text-left resize-none;
-  }
-}
-
-@layer components {
-  /* Buttons */
-  .main {
-    @apply font-bold bg-primary text-2xl my-4 sm:text-4xl rounded-xl p-4 sm:mt-12;
-  }
-  .submit {
-    @apply font-bold bg-primary text-xl sm:text-2xl mx-auto rounded-md p-2 w-full;
-  }
-  .buttons {
-    @apply flex mt-4 flex-col mx-auto gap-4;
-  }
-  /* Form-Related */
-  .labeled-input {
-    @apply flex flex-col text-left text-xl font-bold;
-  }
-  .labeled-input > input,
-  .labeled-input > textarea {
-    @apply my-2;
   }
 }

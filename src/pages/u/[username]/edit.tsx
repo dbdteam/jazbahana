@@ -6,8 +6,9 @@ import {
   withPageAuth,
 } from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
-import Avatar from "../../components/Avatar";
-import Page from "../../components/Layout/Page";
+import Avatar from "../../../components/Avatar";
+import Page from "../../../components/Layout/Page";
+import Button from "../../../components/Button";
 
 export default function EditProfile({ profile }: { profile: Profile }) {
   const { user } = useUser();
@@ -67,17 +68,17 @@ export default function EditProfile({ profile }: { profile: Profile }) {
             <p className="my-2">{user?.email}</p>
 
             <div className="my-4">
-              <div className="labeled-input">
+              <div className="flex flex-col text-xl text-left font-bold my-4">
                 <label htmlFor="username">Username</label>
                 <input
-                  className="mb-4 p-4"
+                  className="p-4"
                   id="username"
                   type="text"
                   value={username || ""}
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
-              <div className="labeled-input">
+              <div className="flex flex-col text-left text-xl font-bold my-4">
                 <label htmlFor="bio">Bio</label>
                 <textarea
                   id="bio"
@@ -86,15 +87,15 @@ export default function EditProfile({ profile }: { profile: Profile }) {
                 />
               </div>
 
-              <div className="buttons">
-                <button
-                  className="submit"
+              <div className="flex flex-col gap-4">
+                <Button
+                  className="text-xl sm:text-2xl p-2"
                   onClick={() => updateProfile({ username, bio, avatar_url })}
                 >
                   Update
-                </button>
+                </Button>
                 <Link href={`/u/${username}`}>
-                  <button className="submit">Back</button>
+                  <Button className="text-xl sm:text-2xl p-2">Back</Button>
                 </Link>
               </div>
             </div>

@@ -2,6 +2,7 @@ import { Auth } from "@supabase/ui";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
 import Card from "../components/Card";
+import Button from "../components/Button";
 
 export default function SignIn() {
   const { user, error } = useUser();
@@ -23,9 +24,12 @@ export default function SignIn() {
   return (
     <Card className="flex justify-center flex-col items-center text-center">
       <h1>You are already signed in.</h1>
-      <button className="main" onClick={() => supabaseClient.auth.signOut()}>
+      <Button
+        className="text-2xl sm:text-4xl my-4 p-4"
+        onClick={() => supabaseClient.auth.signOut()}
+      >
         Sign Out
-      </button>
+      </Button>
     </Card>
   );
 }

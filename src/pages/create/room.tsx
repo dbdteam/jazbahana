@@ -2,6 +2,7 @@ import { supabaseClient, withPageAuth } from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
+import Button from "../../components/Button";
 import Page from "../../components/Layout/Page";
 
 export default function CreateRoom() {
@@ -35,16 +36,16 @@ export default function CreateRoom() {
       <div className="w-[90%] md:w-[50%] mx-auto bg-dark text-center py-8 rounded-xl">
         <h1>Create Room</h1>
         <form className="w-[90%] mx-auto my-4" onSubmit={handleSubmit}>
-          <div className="labeled-input">
+          <div className="flex flex-col text-xl font-bold text-left my-4">
             <label htmlFor="name">Room Name</label>
             <input
-              className="mb-4 p-4"
+              className="p-4"
               id="name"
               type="text"
               onChange={(e) => setRoom({ ...room, name: e.target.value })}
             />
           </div>
-          <div className="labeled-input">
+          <div className="flex flex-col text-xl font-bold text-left my-4">
             <label htmlFor="description">Room Description</label>
             <textarea
               id="description"
@@ -54,16 +55,20 @@ export default function CreateRoom() {
             />
           </div>
 
-          <label htmlFor="is_private">Should Your Room be Private</label>
-          <input
-            type="checkbox"
-            id="is_private"
-            name="is_private"
-            checked={room.is_private}
-            onChange={() => setRoom({ ...room, is_private: !room.is_private })}
-          />
+          <div className="flex flex-col text-xl font-bold text-left my-4">
+            <label htmlFor="is_private">Should Your Room be Private</label>
+            <input
+              type="checkbox"
+              id="is_private"
+              name="is_private"
+              checked={room.is_private}
+              onChange={() =>
+                setRoom({ ...room, is_private: !room.is_private })
+              }
+            />
+          </div>
 
-          <button className="submit">Create</button>
+          <Button className="text-xl sm:text-2xl p-2 w-full">Create</Button>
         </form>
       </div>
     </Page>
