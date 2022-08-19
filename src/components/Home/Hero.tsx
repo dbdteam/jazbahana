@@ -2,19 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../Button";
 import Section from "../Section";
+import H from "../Highlight";
 
 export default function Hero() {
   return (
     <Section id="hero" className="uppercase md:flex-row gap-8 py-24">
       <div className="p-4">
-        <h1 className="text-4xl font-extrabold">
+        <h1 className="text-4xl font-extrabold leading-snug">
           Having problems with school?
-        </h1>
-        <h1 className="text-4xl font-extrabold my-4">
+          <br />
           Easily trade your notes
-        </h1>
-        <h1 className="text-4xl font-extrabold text-secondary">
-          with Jazbahana
+          <br />
+          <H>with Jazbahana</H>
         </h1>
         <Link href="#what-is-jazbahana">
           <a>

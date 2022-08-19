@@ -6,9 +6,7 @@ export default function WhatIsJazbahana() {
   return (
     <Section id="what-is-jazbahana" className="text-center">
       <div className="text-xl sm:text-2xl max-w-[720px] mx-auto flex flex-col gap-8">
-        <h1 className="text-4xl font-extrabold">
-          What is Jazbahana?
-        </h1>
+        <h1 className="text-4xl font-extrabold">What is Jazbahana?</h1>
         <p>
           <H>Jazbahana</H> is a platform specialized for students all around the
           world to <H>trade notes as simple as opening tabs.</H>

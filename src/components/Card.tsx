@@ -11,7 +11,7 @@ export default function Card({
 }) {
   return (
     <div id={id} className={`flex items-center min-h-screen ${className}`}>
-      <div className="rounded-md bg-dark max-w-[48ch] mx-auto p-10 m-10">
+      <div className="rounded-md bg-dark max-w-[480px] mx-auto p-10 m-10">
         {children}
       </div>
     </div>
