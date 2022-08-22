@@ -51,7 +51,7 @@ export default function Avatar({
         <img
           src={publicURL || "/images/avatar.svg"}
           alt="Avatar"
-          className={`rounded-full w-[${size}px] h-[${size}px] object-cover`}
+          className={`rounded-full w-32 h-32 object-cover`}
         />
       </div>
       {onUpload && (
