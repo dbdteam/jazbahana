@@ -46,13 +46,7 @@ export default function Profile({
           <p className="py-2 px-2 font-bold text-xl">{profile.bio}</p>
         </div>
         <h3 className="text-xl font-bold flex items-center text-left my-4">
-          Balance: {profile.balance}
-          <Image
-            src="/images/features/jazbapoint.png"
-            width={36}
-            height={36}
-            alt="Economy Feature"
-          />
+          Balance: {profile.balance} JP
         </h3>
         {user && user.id === profile.id && (
           <div className="flex flex-col gap-4">
