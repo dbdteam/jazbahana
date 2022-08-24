@@ -3,7 +3,6 @@ import type { User } from "@supabase/supabase-js";
 import type { GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Router from "next/router";
 import Avatar from "../../../components/Avatar";
 import Button from "../../../components/Button";
 import Card from "../../../components/Card";
@@ -35,17 +34,12 @@ export default function Profile({
   user: User;
   profile: Profile;
 }) {
-  function handleSignOut() {
-    supabaseClient.auth.signOut();
-    Router.push("/");
-  }
-
   return (
     <Page title="Profile" className="min-h-screen flex items-center">
       <Card>
-        <Avatar url={profile.avatar_url} size={120} />
-        <h1 className="text-center my-2 text-2xl sm:text-4xl font-extrabold">
-          {profile.username}
+        <Avatar user={user} url={profile.avatar_url} />
+        <h1 className="text-center my-2 text-2xl font-extrabold">
+          @{profile.username}
         </h1>
         <h3 className="text-xl font-bold text-left my-2">Bio</h3>
         <div className="bg-gray-400 bg-opacity-[50%] h-[128px] px-1 rounded-md text-left">
@@ -62,14 +56,14 @@ export default function Profile({
         </h3>
         {user && user.id === profile.id && (
           <div className="flex flex-col gap-4">
-            <Link href={`/u/${user.id}/edit`}>
+            <Link href={`/u/${profile.username}/edit`}>
               <a>
                 <Button className="text-xl sm:text-2xl p-2 w-full">Edit</Button>
               </a>
             </Link>
             <Button
               className="text-xl sm:text-2xl p-2 w-full"
-              onClick={handleSignOut}
+              onClick={() => supabaseClient.auth.signOut()}
             >
               Sign Out
             </Button>

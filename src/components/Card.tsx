@@ -1,11 +1,9 @@
-import { ReactNode } from "react";
-
 export default function Card({
   children,
   id = "",
   className,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
   id?: string;
   className?: string;
 }) {

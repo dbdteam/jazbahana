@@ -4,9 +4,9 @@ import H from "../Highlight";
 
 export default function WhatIsJazbahana() {
   return (
-    <Section id="what-is-jazbahana" className="mx-4">
+    <Section id="what-is-jazbahana" className="min-h-screen mx-4">
       <div className="text-center text-xl sm:text-2xl max-w-[720px] mx-auto flex flex-col gap-8">
-        <h1 className="text-4xl font-extrabold">
+        <h1 className="text-4xl lg:text-6xl font-extrabold">
           What is Jazbahana?
         </h1>
         <p>

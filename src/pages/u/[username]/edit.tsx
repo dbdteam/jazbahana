@@ -20,7 +20,7 @@ export default function EditProfile({ profile }: { profile: Profile }) {
   const [avatar_url, setAvatarUrl] = useState("");
 
   useEffect(() => {
-    async function setProfile() {
+    async function getProfile() {
       if (profile) {
         setUsername(profile.username);
         setBio(profile.bio);
@@ -28,7 +28,7 @@ export default function EditProfile({ profile }: { profile: Profile }) {
       }
       return;
     }
-    setProfile();
+    getProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
@@ -59,8 +59,8 @@ export default function EditProfile({ profile }: { profile: Profile }) {
     <Page title="Edit Profile" className="min-h-screen flex items-center">
       <Card>
         <Avatar
+          user={user}
           url={avatar_url}
-          size={120}
           onUpload={(url: string) => {
             setAvatarUrl(url);
             updateProfile({ username, bio, avatar_url: url });

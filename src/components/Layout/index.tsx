@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useUser } from "@supabase/auth-helpers-react";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
@@ -6,7 +6,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   const [parent] = useAutoAnimate<HTMLDivElement>();
   const { user } = useUser();
   const [profile, setProfile] = useState<Profile | null>(null);

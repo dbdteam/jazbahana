@@ -58,20 +58,33 @@ function Room({ room }: { room: Room }) {
 }
 
 export default function Rooms({ rooms }: { rooms: Room[] }) {
-  if (!rooms) {
+  rooms = [];
+  if (!(rooms.length > 0)) {
     return (
-      <Card>
-        <h1 className="text-center text-4xl font-extrabold">No rooms yet...</h1>
-      </Card>
+      <div className="min-h-screen flex items-center">
+        <Card className="flex flex-col items-center justify-center gap-4">
+          <h1 className="text-center text-4xl font-extrabold">
+            No rooms yet...
+          </h1>
+          <Link href="/rooms/create">
+            <a>
+              <Button className="p-2 text-2xl">Create One</Button>
+            </a>
+          </Link>
+        </Card>
+      </div>
     );
   }
   return (
     <Page title="Rooms" className="min-h-screen">
-      <Link href="/rooms/create">
-        <a>
-          <Button className="text-xl sm:text-2xl p-2 w-[90%] mx-auto max-w-[720px]">Create Room</Button>
-        </a>
-      </Link>
+      <div className="w-[90%] sm:w-[60%] my-2 max-w-[720px] mx-auto flex justify-between items-center">
+        <h1 className="text-4xl font-extrabold">Rooms</h1>
+        <Link href="/rooms/create">
+          <a>
+            <Button className="text-2xl p-2">Create Room</Button>
+          </a>
+        </Link>
+      </div>
       {rooms.map((room) => (
         <Room key={room.name} room={room} />
       ))}

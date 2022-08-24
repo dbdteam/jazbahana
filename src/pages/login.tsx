@@ -9,27 +9,33 @@ export default function SignIn() {
 
   if (!user) {
     return (
-      <Card>
-        {error && <p>{error.message}</p>}
-        <Auth
-          supabaseClient={supabaseClient}
-          providers={["google"]}
-          socialLayout="vertical"
-          socialButtonSize="xlarge"
-          magicLink
-        />
-      </Card>
+      <div className="min-h-screen flex items-center">
+        <Card>
+          {error && <p>{error.message}</p>}
+          <Auth
+            supabaseClient={supabaseClient}
+            providers={["google"]}
+            socialLayout="vertical"
+            socialButtonSize="xlarge"
+            magicLink
+          />
+        </Card>
+      </div>
     );
   }
   return (
-    <Card className="flex justify-center flex-col items-center text-center">
-      <h1 className="text-4xl font-extrabold">You are already signed in.</h1>
-      <Button
-        className="text-2xl sm:text-4xl my-4 p-4"
-        onClick={() => supabaseClient.auth.signOut()}
-      >
-        Sign Out
-      </Button>
-    </Card>
+    <div className="min-h-screen flex items-center">
+      <Card className="flex justify-center flex-col items-center">
+        <h1 className="text-center text-4xl font-extrabold">
+          You are already signed in.
+        </h1>
+        <Button
+          className="text-2xl sm:text-4xl my-4 p-4"
+          onClick={() => supabaseClient.auth.signOut()}
+        >
+          Sign Out
+        </Button>
+      </Card>
+    </div>
   );
 }

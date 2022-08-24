@@ -6,7 +6,7 @@ import H from "../Highlight";
 
 export default function Hero() {
   return (
-    <Section id="hero" className="uppercase md:flex-row gap-8 py-24">
+    <Section id="hero" className="uppercase md:flex-row md:py-40 gap-8 py-10">
       <div className="p-4">
         <h1 className="text-3xl sm:text-4xl font-extrabold leading-snug">
           Having problems with school?

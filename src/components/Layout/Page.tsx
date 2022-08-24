@@ -1,12 +1,11 @@
 import Head from "next/head";
-import { ReactNode } from "react";
 
 export default function Page({
   children,
   className = "",
   title,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
   className?: string;
   title: string;
 }) {

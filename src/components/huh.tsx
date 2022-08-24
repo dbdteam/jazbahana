@@ -12,24 +12,23 @@ export default function Avatar({
 }) {
   const [uploading, setUploading] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const [avatarURL, setAvatarURL] = useState<string | null>(null);
+  const [avatarURL, setAvatarURL] = useState("");
 
   useEffect(() => {
-    if (url) downloadImage(url);
-  }, [url]);
+    getAvatar();
+    // eslint-disable-next-line
+  }, []);
 
-  async function downloadImage(path: string) {
-    try {
-      const { data, error } = await supabaseClient.storage
+  async function getAvatar() {
+    if (url) {
+      const { publicURL, error } = supabaseClient.storage
         .from("avatars")
-        .download(path);
+        .getPublicUrl(url);
 
       if (error) throw error;
-
-      const url = URL.createObjectURL(data as Blob);
-      setAvatarURL(url);
-    } catch (error: any) {
-      console.log("Error downloading image: ", error.message);
+      setAvatarURL(publicURL!);
+    } else {
+      setAvatarURL("");
     }
   }
 
@@ -99,7 +98,7 @@ export default function Avatar({
       {onUpload && (
         <div className="flex gap-2 justify-center mx-auto">
           <label
-            className="text-center text-gray-100 font-bold text-xl sm:text-2xl bg-blue-500 rounded-md p-2 mt-4 cursor-pointer"
+            className="text-center text-gray-100 font-bold text-xl sm:text-2xl bg-blue-500 rounded-md p-2 mt-4 block cursor-pointer"
             htmlFor="update"
           >
             {uploading ? "..." : "Upload"}
@@ -113,13 +112,20 @@ export default function Avatar({
             disabled={uploading}
           />
           {avatarURL && (
-            <button
-              className="text-center text-gray-100 font-bold text-xl sm:text-2xl bg-red-500 rounded-md p-2 mt-4 cursor-pointer"
-              onClick={deleteAvatar}
-              disabled={deleting}
-            >
-              {deleting ? "..." : "Delete"}
-            </button>
+            <div>
+              <label
+                className="text-center text-gray-100 font-bold text-xl sm:text-2xl bg-red-500 rounded-md p-2 mt-4 block cursor-pointer"
+                htmlFor="delete"
+              >
+                {deleting ? "..." : "Delete"}
+              </label>
+              <button
+                className="hidden absolute"
+                id="delete"
+                onClick={deleteAvatar}
+                disabled={deleting}
+              />
+            </div>
           )}
         </div>
       )}
