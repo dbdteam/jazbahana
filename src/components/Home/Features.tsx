@@ -1,69 +1,54 @@
-import Image from "next/image";
-import { ReactNode } from "react";
 import Section from "../Section";
 import H from "../Highlight";
+import Link from "next/link";
+import { useUser } from "@supabase/auth-helpers-react";
 
-export default function Features() {
+function Feature({
+  children,
+  title,
+}: {
+  children: React.ReactNode;
+  title: string;
+}) {
   return (
-    <Section id="features">
-      <h1 className="text-4xl font-extrabold">Features</h1>
-      <div className="grid grid-cols-1 my-6 max-w-[1080px] mx-auto">
-        <Feature>
-          <Image
-            className="rounded-md"
-            src="/images/features/notes.png"
-            width={190}
-            height={250}
-            alt="Notes Feature"
-          />
-          <p className="mt-4 mx-4 text-2xl">
-            It solves the task by opening either a{" "}
-            <H>public or private chat-like room.</H>
-            <br />
-            The public one is available to <H>everybody</H> on the Internet
-            whilst the private is only open to <H>you and your friends</H>!
-          </p>
-        </Feature>
-
-        <Feature>
-          <p className="hidden sm:block mt-4 mx-4 text-2xl">
-            Notes are uploaded via <H>file-select form</H>. They can be images,
-            PDFs and Word documents.
-          </p>
-          <Image
-            className="rounded-md"
-            src="/images/features/form.png"
-            width={300}
-            height={250}
-            alt="Upload Notes Feature"
-          />
-          <p className="sm:hidden mt-4 mx-4 text-2xl">
-            Notes are uploaded via <H>file-select form</H>. They can be images,
-            PDFs and Word documents.
-          </p>
-        </Feature>
-
-        <Feature>
-          <Image
-            className="rounded-md"
-            src="/images/features/jazbapoint.png"
-            width={250}
-            height={250}
-            alt="Economy Feature"
-          />
-          <p className="mt-4 mx-4 text-2xl">
-            <H>Economy</H>. Jazbahana offers its own currency called JazbaPoint.
-          </p>
-        </Feature>
-      </div>
-    </Section>
+    <div className="p-4 rounded-md max-w-[40ch] bg-[#202020]">
+      <h1 className="text-3xl font-extrabold my-3">{title}</h1>
+      <p>{children}</p>
+    </div>
   );
 }
 
-function Feature({ children }: { children: ReactNode }) {
+export default function Features() {
+  const { user } = useUser();
   return (
-    <div className="flex items-center justify-evenly flex-col sm:flex-row p-8 rounded-md">
-      {children}
-    </div>
+    <Section id="features" className="min-h-screen mx-4">
+      <h1 className="text-4xl lg:text-6xl font-extrabold">Features</h1>
+      <div className="py-10 grid gap-8 xl:grid-cols-3 justify-items-center text-gray-100">
+        <Feature title="Rooms">
+          You get to choose whether the room you&apos;re creating is public or
+          private. Go to{" "}
+          <Link href="/rooms">
+            <a>
+              <H>/rooms</H> and look around numerous different topics and
+              people!
+            </a>
+          </Link>
+        </Feature>
+        <Feature title="Profiles">
+          Jazbahana uses the minimal set of data it gets from Google Sign In
+          when you register. Your profile is customizable. Go check{" "}
+          <Link href={user ? `/u/${user?.id}` : "/login"}>
+            <a>
+              <H>your profile</H> and set a fancy avatar!
+            </a>
+          </Link>
+        </Feature>
+        <Feature title="Economy">
+          Jazbahana offers its own inner currency called <H>JazbaPoint</H>,
+          where you get 300JP (or 100,00KZT) after you register. Use JazbaPoints
+          to <H>create rooms, buy notes or donate</H> to your friends!
+        </Feature>
+      </div>
+    </Section>
   );
 }
